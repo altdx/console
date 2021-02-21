@@ -2,7 +2,6 @@
 import figures from "figures";
 // @ts-ignore
 import { assertEquals } from "testing/asserts.ts";
-
 import { ConsoleFigure, consoleFigure } from "./mod.ts";
 
 const methods: string[] = Object.getOwnPropertyNames(ConsoleFigure.prototype);

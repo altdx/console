@@ -1,6 +1,5 @@
 // @ts-ignore
 import figures from "figures";
-
 import { IConsoleFigure } from "./mod.ts";
 
 /**
