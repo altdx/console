@@ -1,7 +1,6 @@
 // @ts-ignore
 import figures from "figures";
-// @ts-ignore
-import { assertEquals } from "testing/asserts.ts";
+import { assertEquals } from "https://deno.land/std@0.87.0/testing/asserts.ts";
 import { ConsoleFigure, consoleFigure } from "./mod.ts";
 
 const methods: string[] = Object.getOwnPropertyNames(ConsoleFigure.prototype);
