@@ -1,6 +1,6 @@
-// @ts-ignore
+// @ts-nocheck @ts-ignore
 import figures from "figures";
-import { assertEquals } from "https://deno.land/std@0.87.0/testing/asserts.ts";
+import { assertEquals } from "../deps.ts";
 import { ConsoleFigure, consoleFigure } from "./mod.ts";
 
 const methods: string[] = Object.getOwnPropertyNames(ConsoleFigure.prototype);
@@ -10,7 +10,7 @@ methods.map((method) => {
     return method;
   }
 
-  Deno.test(`should render ${method}`, () => {
+  Deno.test(`Altdx Console Figure - should render ${method}`, () => {
     if (method === "square") {
       assertEquals(figures.squareSmall, consoleFigure.square());
 
@@ -23,7 +23,7 @@ methods.map((method) => {
       return;
     }
 
-    // @ts-ignore
+    // @ts-nocheck @ts-ignore
     assertEquals(figures[method], consoleFigure[method]());
   });
 

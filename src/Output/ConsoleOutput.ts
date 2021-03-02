@@ -1,5 +1,4 @@
-// @ts-ignore
-import { EOL } from "fs/mod.ts";
+import { EOL } from "../deps.ts";
 import { consoleFigure } from "../Figure/mod.ts";
 import { ConsoleStyle, IConsoleStyle } from "../Style/mod.ts";
 import { IConsoleOutput } from "./mod.ts";

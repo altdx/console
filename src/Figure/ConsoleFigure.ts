@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-nocheck @ts-ignore
 import figures from "figures";
 import { IConsoleFigure } from "./mod.ts";
 

@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-nocheck @ts-ignore
 import colors from "ansi-colors";
 import { ColorType, IConsoleStyle, ModifierType } from "./mod.ts";
 
