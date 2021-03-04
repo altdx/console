@@ -11,7 +11,7 @@ export interface IConsoleOutput {
    * @param text - Text to write.
    * @param style - Style to apply.
    */
-  write(text: string, style?: IConsoleStyle): IConsoleOutput;
+  write: (text: string, style?: IConsoleStyle) => IConsoleOutput;
 
   /**
    * Write with new line.
@@ -19,21 +19,21 @@ export interface IConsoleOutput {
    * @param text - Text to write.
    * @param style - Style to apply.
    */
-  writeln(text: string, style?: IConsoleStyle): IConsoleOutput;
+  writeln: (text: string, style?: IConsoleStyle) => IConsoleOutput;
 
   /**
    * Write new line.
    *
    * @param count - Number of line.
    */
-  newLine(count?: number): IConsoleOutput;
+  newLine: (count?: number) => IConsoleOutput;
 
   /**
    * Write space.
    *
    * @param count - Number of space.
    */
-  space(count?: number): IConsoleOutput;
+  space: (count?: number) => IConsoleOutput;
 
   /**
    * Write success message.
@@ -41,7 +41,7 @@ export interface IConsoleOutput {
    * @param text - Message to print.
    * @param figure - Add check mark first.
    */
-  success(text: string, figure?: boolean): IConsoleOutput;
+  success: (text: string, figure?: boolean) => IConsoleOutput;
 
   /**
    * Write error message.
@@ -49,7 +49,7 @@ export interface IConsoleOutput {
    * @param text - Message to print.
    * @param figure - Add cross mark first.
    */
-  error(text: string, figure: boolean): IConsoleOutput;
+  error: (text: string, figure: boolean) => IConsoleOutput;
 
   /**
    * Write info message.
@@ -57,7 +57,7 @@ export interface IConsoleOutput {
    * @param text - Message to print.
    * @param figure - Add info mark first.
    */
-  info(text: string, figure: boolean): IConsoleOutput;
+  info: (text: string, figure: boolean) => IConsoleOutput;
 
   /**
    * Write warning message.
@@ -65,5 +65,5 @@ export interface IConsoleOutput {
    * @param text - Message to print.
    * @param figure - Add warning mark first.
    */
-  warning(text: string, figure: boolean): IConsoleOutput;
+  warning: (text: string, figure: boolean) => IConsoleOutput;
 }

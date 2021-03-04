@@ -12,80 +12,98 @@ export interface IConsoleRequest {
   /**
    * Get command.
    */
-  getCommand(): string | null;
+  getCommand: () => string | null;
+
+  /**
+   * Set command.
+   */
+  setCommand: (command: string | null) => IConsoleRequest;
 
   /**
    * Check if this request has a command.
    */
-  hasCommand(): boolean;
+  hasCommand: () => boolean;
 
   /**
    * Get sub commands.
    */
-  getSubCommands(): string[];
+  getSubCommands: () => string[];
 
   /**
    * Check if this request has a sub commands.
    */
-  hasSubCommands(): boolean;
+  hasSubCommands: () => boolean;
+
+  /**
+   * Add long or short option.
+   *
+   * @param option - Short or long option.
+   * @param value - Value of short or long option.
+   */
+  addOption: (option: string, value: string | boolean) => IConsoleRequest;
 
   /**
    * Check if this request has a given option.
    *
    * @param option - Name of option. Omit argument to check if short option is defined.
    */
-  hasShortOption(option?: string): boolean;
+  hasShortOption: (option?: string) => boolean;
 
   /**
    * Check if this request has a given option.
    *
    * @param option - Name of option. Omit argument to check if long option is defined.
    */
-  hasLongOption(option?: string): boolean;
+  hasLongOption: (option?: string) => boolean;
 
   /**
    * Check if this request has a given option.
    *
    * @param option - Name of option. Omit argument to check if short option is defined.
    */
-  hasOption(option?: string): boolean;
+  hasOption: (option?: string) => boolean;
 
   /**
    * Get all short options.
    */
-  getShortOptions(): ConsoleRequestOptionType;
+  getShortOptions: () => ConsoleRequestOptionType;
 
   /**
    * Get short option.
    *
    * @param option - Name of short option.
    */
-  getShortOption(option: string): (string | boolean)[] | null;
+  getShortOption: (option: string) => (string | boolean)[] | null;
 
   /**
    * Get all long options.
    */
-  getLongOptions(): ConsoleRequestOptionType;
+  getLongOptions: () => ConsoleRequestOptionType;
 
   /**
    * Get short option.
    *
    * @param option - Name of long option.
    */
-  getLongOption(option: string): (string | boolean)[] | null;
+  getLongOption: (option: string) => (string | boolean)[] | null;
+
+  /**
+   * Set arguments.
+   */
+  setArguments: (args: string[]) => IConsoleRequest;
 
   /**
    * Get arguments.
    */
-  getArguments(): string[];
+  getArguments: () => string[];
 
   /**
    * Check if this request has arguments.
    */
-  hasArgument(): boolean;
+  hasArgument: () => boolean;
 
   /**
    * Parses arguments.
    */
-  parse(args: string[]): IConsoleRequest;
+  parse: (args: string[]) => IConsoleRequest;
 }

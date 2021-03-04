@@ -25,7 +25,7 @@ export class ConsoleRequest implements IConsoleRequest {
   private shortOptionRegExp = /^-[a-z]$/i;
 
   /**
-   * Set command.
+   * @inheritDoc IConsoleRequest.setCommand
    */
   public setCommand(command: string | null): this {
     if (!command) {
@@ -33,9 +33,7 @@ export class ConsoleRequest implements IConsoleRequest {
     }
 
     this.subCommands = (command as string).split(":");
-
     this.command = this.subCommands[0] as string;
-
     this.subCommands = this.subCommands.slice(1);
 
     return this;
@@ -70,10 +68,7 @@ export class ConsoleRequest implements IConsoleRequest {
   }
 
   /**
-   * Add long or short option.
-   *
-   * @param option - Short or long option.
-   * @param value - Value of short or long option.
+   * @inheritDoc IConsoleRequest.addOption
    */
   public addOption(option: string, value: string | boolean): this {
     let optionType: "longOptions" | "shortOptions" = "longOptions";
@@ -153,7 +148,7 @@ export class ConsoleRequest implements IConsoleRequest {
   }
 
   /**
-   * Set arguments.
+   * @inheritDoc IConsoleRequest.setArguments
    */
   public setArguments(args: string[]): this {
     this.consoleArgs = args;

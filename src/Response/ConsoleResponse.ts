@@ -9,9 +9,7 @@ export class ConsoleResponse implements IConsoleResponse {
   private data: unknown;
 
   /**
-   * Sets status code.
-   *
-   * @param code - Number of code.
+   * @inheritDoc IConsoleResponse.setStatus
    */
   public setStatus(code: StatusType): this {
     this.status = code;
@@ -27,9 +25,7 @@ export class ConsoleResponse implements IConsoleResponse {
   }
 
   /**
-   * Sets status code.
-   *
-   * @param message - Message of code.
+   * @inheritDoc IConsoleResponse.setStatusMessage
    */
   public setStatusMessage(message: string): this {
     this.statusMessage = message;
@@ -51,14 +47,15 @@ export class ConsoleResponse implements IConsoleResponse {
     return this.data as T;
   }
 
+  /**
+   * @inheritDoc IConsoleResponse.hasData
+   */
   public hasData(): boolean {
     return this.data !== undefined;
   }
 
   /**
-   * Sets response data.
-   *
-   * @param data - Data to return.
+   * @inheritDoc IConsoleResponse.setData
    */
   public setData(data: unknown): this {
     this.data = data;

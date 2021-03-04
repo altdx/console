@@ -25,9 +25,30 @@ export interface IConsoleResponse {
   getStatus: () => StatusType;
 
   /**
+   * Sets status code.
+   *
+   * @param code - Number of code.
+   */
+  setStatus: (code: StatusType) => IConsoleResponse;
+
+  /**
+   * Sets status code.
+   *
+   * @param message - Message of code.
+   */
+  setStatusMessage: (message: string) => IConsoleResponse;
+
+  /**
    * Gets status message.
    */
   getStatusMessage: () => string;
+
+  /**
+   * Sets response data.
+   *
+   * @param data - Data to return.
+   */
+  setData: (data: unknown) => IConsoleResponse;
 
   /**
    * Gets response data.
