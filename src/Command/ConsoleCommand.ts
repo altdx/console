@@ -1,6 +1,11 @@
-import { IConsoleRequest } from '../Request/mod.ts';
-import { IConsoleResponse } from '../Response/mod.ts';
-import {ConsoleCommandType, IConsoleCommand, LongOptionType, ShortOptionType} from './mod.ts';
+import { IConsoleRequest } from "../Request/mod.ts";
+import { IConsoleResponse } from "../Response/mod.ts";
+import {
+  ConsoleCommandType,
+  IConsoleCommand,
+  LongOptionType,
+  ShortOptionType,
+} from "./mod.ts";
 
 /**
  * Altdx Console Command.
@@ -43,7 +48,10 @@ export class ConsoleCommand implements IConsoleCommand {
   /**
    * @inheritDoc IConsoleCommand.run
    */
-  public run(request: IConsoleRequest, response: IConsoleResponse): IConsoleResponse {
+  public run(
+    request: IConsoleRequest,
+    response: IConsoleResponse,
+  ): IConsoleResponse {
     return this.def.run(request, response);
   }
 }

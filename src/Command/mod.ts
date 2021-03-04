@@ -1,13 +1,69 @@
-import { IConsoleRequest } from '../Request/mod.ts';
-import { IConsoleResponse } from '../Response/mod.ts';
+import { IConsoleRequest } from "../Request/mod.ts";
+import { IConsoleResponse } from "../Response/mod.ts";
 
-type PartialRecord<K extends string, T> = { [P in K]?: T; };
+type PartialRecord<K extends string, T> = { [P in K]?: T };
 
-export * from './ConsoleCommand.ts';
+export * from "./ConsoleCommand.ts";
+export * from "./ConsoleCommandCollection.ts";
 
-export type LetterType = 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'w' | 'x' | 'y' | 'z' | 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'W' | 'X' | 'Y' | 'Z';
+export type LetterType =
+  | "a"
+  | "b"
+  | "c"
+  | "d"
+  | "e"
+  | "f"
+  | "g"
+  | "h"
+  | "i"
+  | "j"
+  | "k"
+  | "l"
+  | "m"
+  | "n"
+  | "o"
+  | "p"
+  | "q"
+  | "r"
+  | "s"
+  | "t"
+  | "u"
+  | "v"
+  | "w"
+  | "x"
+  | "y"
+  | "z"
+  | "A"
+  | "B"
+  | "C"
+  | "D"
+  | "E"
+  | "F"
+  | "G"
+  | "H"
+  | "I"
+  | "J"
+  | "K"
+  | "L"
+  | "M"
+  | "N"
+  | "O"
+  | "P"
+  | "Q"
+  | "R"
+  | "S"
+  | "T"
+  | "U"
+  | "V"
+  | "W"
+  | "X"
+  | "Y"
+  | "Z";
 
-export type ShortOptionType = PartialRecord<LetterType, ConsoleCommandOptionType>;
+export type ShortOptionType = PartialRecord<
+  LetterType,
+  ConsoleCommandOptionType
+>;
 export type LongOptionType = Record<string, ConsoleCommandOptionType>;
 
 /**
@@ -62,7 +118,10 @@ export type ConsoleCommandType = {
    * @param request - Inject request object build from user input.
    * @param response - Inject response object.
    */
-  run: (request: IConsoleRequest, response: IConsoleResponse) => IConsoleResponse;
+  run: (
+    request: IConsoleRequest,
+    response: IConsoleResponse,
+  ) => IConsoleResponse;
 };
 
 /**
@@ -92,7 +151,10 @@ export interface IConsoleCommand {
   /**
    * @inheritDoc ConsoleCommandType.run
    */
-  run: (request: IConsoleRequest, response: IConsoleResponse) => IConsoleResponse;
+  run: (
+    request: IConsoleRequest,
+    response: IConsoleResponse,
+  ) => IConsoleResponse;
 }
 
 /**
