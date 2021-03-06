@@ -1,5 +1,4 @@
-// @ts-nocheck @ts-ignore
-import figures from "figures";
+import figures from "https://cdn.skypack.dev/figures@3.2.0?dts";
 import { assertEquals } from "../deps.ts";
 import { ConsoleFigure, consoleFigure } from "./mod.ts";
 
@@ -23,7 +22,8 @@ methods.map((method) => {
       return;
     }
 
-    // @ts-nocheck @ts-ignore
+    // @ts-nocheck
+    // @ts-ignore
     assertEquals(figures[method], consoleFigure[method]());
   });
 

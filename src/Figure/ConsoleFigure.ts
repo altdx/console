@@ -1,5 +1,4 @@
-// @ts-nocheck @ts-ignore
-import figures from "figures";
+import figures from "https://cdn.skypack.dev/figures@3.2.0?dts";
 import { IConsoleFigure } from "./mod.ts";
 
 /**
@@ -9,14 +8,6 @@ import { IConsoleFigure } from "./mod.ts";
  * @remarks
  *
  * This class is based on the {@link https://www.npmjs.com/package/figures | figures} package.
- *
- * @example
- *
- * ```ts
- *  import { consoleFigure as figure } from '@altdx/console-figure';
- *
- *  console.log(figure.tick());
- * ```
  */
 export class ConsoleFigure implements IConsoleFigure {
   /**

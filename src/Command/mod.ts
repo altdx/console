@@ -126,6 +126,7 @@ export type ConsoleCommandType = {
 
 /**
  * Altdx Console Command interface.
+ * Todo: add check or verify method
  */
 export interface IConsoleCommand {
   /**

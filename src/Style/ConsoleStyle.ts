@@ -21,6 +21,8 @@ import { ColorType, IConsoleStyle, ModifierType } from "./mod.ts";
  *  style.color('white', true).bgc('blue');
  *  console.log(style.render('hello'));
  * ```
+ *
+ * Todo: use Deno color instead of ansi-colors
  */
 export class ConsoleStyle implements IConsoleStyle {
   private modifier: ModifierType | null = null;
