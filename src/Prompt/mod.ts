@@ -1,5 +1,5 @@
-export * from './ConsolePrompt.ts';
-export * from './AbstractConsolePrompt.ts';
+export * from "./ConsolePrompt.ts";
+export * from "./AbstractConsolePrompt.ts";
 
 import { Input, Number } from "../deps.ts";
 
@@ -46,7 +46,6 @@ export type ConsolePromptQuestionType = {
  * Console prompt interface.
  */
 export interface IConsolePrompt {
-
   /**
    * Get type of prompt.
    */
@@ -57,7 +56,7 @@ export interface IConsolePrompt {
    *
    * @param type - Type of prompt.
    */
-  setType: (type: TypeValueType) => IConsolePrompt
+  setType: (type: TypeValueType) => IConsolePrompt;
 
   /**
    * Get key for answer.
@@ -90,7 +89,12 @@ export interface IConsolePrompt {
   getQuestion: () => ConsolePromptQuestionType;
 
   /**
+   * Get parse question. Can be used to transform question for another module.
+   */
+  getParseQuestion: () => unknown;
+
+  /**
    * Prompt question.
    */
-  prompt: () => Promise<unknown>;
+  prompt<T>(): Promise<T>;
 }

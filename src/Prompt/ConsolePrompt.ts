@@ -1,4 +1,4 @@
-import { IConsolePrompt } from './mod.ts';
+import { IConsolePrompt } from "./mod.ts";
 
 /**
  * Input Console Prompt.
@@ -37,5 +37,4 @@ export class ConsolePrompt {
   public getPrompts(): IConsolePrompt[] {
     return this.prompts;
   }
-
 }

@@ -1,10 +1,11 @@
+// deno-lint-ignore-file ban-ts-comment
 import {
-  IConsolePrompt,
   ConsolePromptQuestionType,
+  IConsolePrompt,
   MessageValueType,
   NameValueType,
   TypeValueType,
-} from './mod.ts';
+} from "./mod.ts";
 
 import { Input, prompt } from "../deps.ts";
 
@@ -12,7 +13,6 @@ import { Input, prompt } from "../deps.ts";
  * Prompt base class.
  */
 export abstract class AbstractConsolePrompt implements IConsolePrompt {
-
   /**
    * Question type for base prompt.
    */
@@ -24,8 +24,8 @@ export abstract class AbstractConsolePrompt implements IConsolePrompt {
   protected constructor() {
     this.question = {
       type: Input,
-      name: 'answer',
-      message: 'Hello',
+      name: "answer",
+      message: "",
     };
   }
 
@@ -77,14 +77,29 @@ export abstract class AbstractConsolePrompt implements IConsolePrompt {
     return this;
   }
 
+  /**
+   * @inheritDoc IConsolePrompt.getQuestion
+   */
   public getQuestion(): ConsolePromptQuestionType {
     return this.question;
   }
 
   /**
+   * @inheritDoc IConsolePrompt.getParseQuestion
+   */
+  public getParseQuestion(): unknown {
+    return {
+      name: this.question.name,
+      type: this.question.type,
+      message: this.question.message ?? "",
+    };
+  }
+
+  /**
    * @inheritDoc IConsolePrompt.prompt
    */
-  public async prompt(): Promise<unknown> {
-    return await prompt([this.question]);
+  public async prompt<T>(): Promise<T> {
+    // @ts-ignore
+    return await prompt([this.getParseQuestion()]);
   }
 }
