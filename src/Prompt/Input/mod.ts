@@ -1,4 +1,4 @@
-import { ConsolePromptQuestionType } from "../mod.ts";
+import {ConsolePromptQuestionType, IConsolePrompt} from "../mod.ts";
 
 export * from "./ConsoleInputPrompt.ts";
 
@@ -44,7 +44,7 @@ export type ConsoleInputPromptQuestionType = ConsolePromptQuestionType & {
 /**
  * Input console prompt interface.
  */
-export interface IConsoleInputPrompt {
+export interface IConsoleInputPrompt extends IConsolePrompt {
   /**
    * Get min and max length of value.
    */
@@ -91,9 +91,4 @@ export interface IConsoleInputPrompt {
    * Hide some usage information.
    */
   hideHelper: () => IConsoleInputPrompt;
-
-  /**
-   * Get parse question. Can be used to transform question for another module.
-   */
-  getParseQuestion: () => unknown;
 }

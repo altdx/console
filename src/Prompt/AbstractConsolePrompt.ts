@@ -12,7 +12,7 @@ import { Input, prompt } from "../deps.ts";
 /**
  * Prompt base class.
  */
-export abstract class AbstractConsolePrompt implements IConsolePrompt {
+export abstract class AbstractConsolePrompt {
   /**
    * Question type for base prompt.
    */
