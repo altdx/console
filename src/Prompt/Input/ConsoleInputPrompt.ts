@@ -32,7 +32,7 @@ export class ConsoleInputPrompt extends AbstractConsolePrompt
       ...this.getQuestion(),
       message: message,
       length: {
-        min: 0,
+        min: null,
         max: null,
       },
       itemsPerPage: 10,

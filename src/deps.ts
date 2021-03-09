@@ -8,6 +8,7 @@ export { EOL } from "https://deno.land/std@0.88.0/fs/mod.ts";
 export {
   Input,
   Number,
+  Secret,
   Checkbox,
   Confirm,
   prompt,

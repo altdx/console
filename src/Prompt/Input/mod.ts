@@ -7,7 +7,7 @@ export * from "./ConsoleInputPrompt.ts";
  */
 export type QuestionLengthType = {
   /**
-   * Minimum value. Defaults to 10.
+   * Minimum value. Defaults to 0.
    */
   min: number | null;
   /**

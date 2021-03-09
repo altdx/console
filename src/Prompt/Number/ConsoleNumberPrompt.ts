@@ -3,13 +3,7 @@ import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
 import {ConsoleNumberPromptQuestionType, IConsoleNumberPrompt} from "./mod.ts";
 
 /**
- * Input console prompt.
- *
- * @example
- *  const input = new ConsoleInputPrompt("Your name :");
- *  input.setSuggestions(["One", "Two"]).showHelper();
- *  const v = await input.prompt<string>();
- *  console.log(v);
+ * Number console prompt.
  */
 export class ConsoleNumberPrompt extends AbstractConsolePrompt
   implements IConsoleNumberPrompt {
@@ -156,12 +150,10 @@ export class ConsoleNumberPrompt extends AbstractConsolePrompt
       name: this.question.name,
       type: this.question.type,
       message: this.question.message ?? "",
-
       min: this.question.min ?? undefined,
       max: this.question.max ?? undefined,
       float: this.question.isFloat,
       round: this.question.format,
-
       suggestions: this.question.suggestions ?? undefined,
       list: this.question.suggestions !== null,
       maxRows: this.question.itemsPerPage,

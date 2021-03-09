@@ -9,7 +9,7 @@ Deno.test("Altdx Console Input Prompt - Should have right options", () => {
     type: Input,
     message: "Your name: ",
     length: {
-      min: 0,
+      min: null,
       max: null,
     },
     suggestions: null,
@@ -80,7 +80,7 @@ Deno.test("Altdx Console Input Prompt - Should parse options", () => {
     name: "answer",
     type: Input,
     message: "Your name: ",
-    minLength: 0,
+    minLength: undefined,
     maxLength: undefined,
     suggestions: undefined,
     list: false,
