@@ -8,10 +8,8 @@ Deno.test("Altdx Console Input Prompt - Should have right options", () => {
     name: "answer",
     type: Input,
     message: "Your name: ",
-    length: {
-      min: null,
-      max: null,
-    },
+    min: null,
+    max: null,
     suggestions: null,
     itemsPerPage: 10,
     helper: false,
@@ -42,8 +40,10 @@ Deno.test("Altdx Console Input Prompt - Should have message", () => {
 Deno.test("Altdx Console Input Prompt - Should set and get length", () => {
   const input = new ConsoleInputPrompt("Your name: ");
 
-  assertEquals(true, input.setLength(25, 100) instanceof ConsoleInputPrompt);
-  assertEquals({ min: 25, max: 100 }, input.getLength());
+  assertEquals(true, input.min(25) instanceof ConsoleInputPrompt);
+  assertEquals(25, input.getQuestion().min);
+  assertEquals(true, input.max(100) instanceof ConsoleInputPrompt);
+  assertEquals(100, input.getQuestion().max);
 });
 
 Deno.test("Altdx Console Input Prompt - Should set and get suggestions", () => {

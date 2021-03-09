@@ -6,7 +6,6 @@ export * from "./ConsoleSecretPrompt.ts";
  * Input console prompt question type.
  */
 export type ConsoleSecretPromptQuestionType = ConsolePromptQuestionType & {
-
   /**
    * Minimum length. Defaults to null.
    */

@@ -3,27 +3,18 @@ import {ConsolePromptQuestionType, IConsolePrompt} from "../mod.ts";
 export * from "./ConsoleInputPrompt.ts";
 
 /**
- * Input console prompt question length type.
- */
-export type QuestionLengthType = {
-  /**
-   * Minimum value. Defaults to 0.
-   */
-  min: number | null;
-  /**
-   * Maximum value. Defaults to null.
-   */
-  max: number | null;
-};
-
-/**
  * Input console prompt question type.
  */
 export type ConsoleInputPromptQuestionType = ConsolePromptQuestionType & {
   /**
-   * Min and max length of value. Defaults to 10 for min and infinity for max.
+   * Minimum length. Defaults to null.
    */
-  length: QuestionLengthType;
+  min: number | null;
+
+  /**
+   * Maximum length. Defaults to null.
+   */
+  max: number | null;
 
   /**
    * A list of auto suggestions.
@@ -46,14 +37,18 @@ export type ConsoleInputPromptQuestionType = ConsolePromptQuestionType & {
  */
 export interface IConsoleInputPrompt extends IConsolePrompt {
   /**
-   * Get min and max length of value.
+   * Set minimum length.
+   *
+   * @param value - Value to set.
    */
-  getLength: () => QuestionLengthType;
+  min: (value: number | null) => IConsoleInputPrompt;
 
   /**
-   * Set min and max length of value.
+   * Set maximum length.
+   *
+   * @param value - Value to set.
    */
-  setLength: (min: number | null, max: number | null) => IConsoleInputPrompt;
+  max: (value: number | null) => IConsoleInputPrompt;
 
   /**
    * Set list of auto suggestions.

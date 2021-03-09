@@ -1,9 +1,5 @@
 import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
-import {
-  ConsoleInputPromptQuestionType,
-  IConsoleInputPrompt,
-  QuestionLengthType,
-} from "./mod.ts";
+import {ConsoleInputPromptQuestionType, IConsoleInputPrompt} from "./mod.ts";
 
 /**
  * Input console prompt.
@@ -31,10 +27,8 @@ export class ConsoleInputPrompt extends AbstractConsolePrompt
     this.question = {
       ...this.getQuestion(),
       message: message,
-      length: {
-        min: null,
-        max: null,
-      },
+      min: null,
+      max: null,
       itemsPerPage: 10,
       helper: false,
       suggestions: null,
@@ -42,21 +36,19 @@ export class ConsoleInputPrompt extends AbstractConsolePrompt
   }
 
   /**
-   * @inheritDoc IConsoleInputPrompt.getLength
+   * @inheritDoc IConsoleInputPrompt.min
    */
-  public getLength(): QuestionLengthType {
-    return this.question.length;
+  public min(value: number | null): IConsoleInputPrompt {
+    this.question.min = value;
+
+    return this;
   }
 
   /**
-   * @inheritDoc IConsoleInputPrompt.setLength
+   * @inheritDoc IConsoleInputPrompt.max
    */
-  public setLength(
-    min: number | null,
-    max: number | null,
-  ): IConsoleInputPrompt {
-    this.question.length.min = min;
-    this.question.length.max = max;
+  public max(value: number | null): IConsoleInputPrompt {
+    this.question.max = value;
 
     return this;
   }
@@ -141,8 +133,8 @@ export class ConsoleInputPrompt extends AbstractConsolePrompt
       name: this.question.name,
       type: this.question.type,
       message: this.question.message ?? "",
-      minLength: this.question.length.min ?? undefined,
-      maxLength: this.question.length.max ?? undefined,
+      minLength: this.question.min ?? undefined,
+      maxLength: this.question.max ?? undefined,
       suggestions: this.question.suggestions ?? undefined,
       list: this.question.suggestions !== null,
       maxRows: this.question.itemsPerPage,
