@@ -1,7 +1,7 @@
+// Todo: Make tests
 // deno-lint-ignore-file ban-ts-comment
 import {
   ConsolePromptQuestionType,
-  IConsolePrompt,
   MessageValueType,
   NameValueType,
   TypeValueType,

@@ -1,5 +1,7 @@
 import {ConsolePromptQuestionType, IConsolePrompt} from "../mod.ts";
 
+export * from "./ConsoleNumberPrompt.ts";
+
 /**
  * Input console prompt question type.
  */

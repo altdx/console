@@ -1,8 +1,6 @@
+import { Number } from "../../deps.ts";
 import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
-import {
-  ConsoleNumberPromptQuestionType,
-  IConsoleNumberPrompt,
-} from "./mod.ts";
+import {ConsoleNumberPromptQuestionType, IConsoleNumberPrompt} from "./mod.ts";
 
 /**
  * Input console prompt.
@@ -13,7 +11,7 @@ import {
  *  const v = await input.prompt<string>();
  *  console.log(v);
  */
-export class ConsoleInputPrompt extends AbstractConsolePrompt
+export class ConsoleNumberPrompt extends AbstractConsolePrompt
   implements IConsoleNumberPrompt {
   /**
    * Question type for input prompt.
@@ -29,6 +27,7 @@ export class ConsoleInputPrompt extends AbstractConsolePrompt
     super();
     this.question = {
       ...this.getQuestion(),
+      type: Number,
       message: message,
       min: null,
       max: null,
