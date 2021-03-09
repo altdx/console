@@ -83,7 +83,7 @@ Deno.test("Altdx Console Input Prompt - Should parse options", () => {
     minLength: undefined,
     maxLength: undefined,
     suggestions: undefined,
-    list: false,
+    list: true,
     maxRows: 10,
     info: false,
   };

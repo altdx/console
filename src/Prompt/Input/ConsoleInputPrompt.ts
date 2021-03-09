@@ -136,7 +136,7 @@ export class ConsoleInputPrompt extends AbstractConsolePrompt
       minLength: this.question.min ?? undefined,
       maxLength: this.question.max ?? undefined,
       suggestions: this.question.suggestions ?? undefined,
-      list: this.question.suggestions !== null,
+      list: this.question.itemsPerPage !== 0,
       maxRows: this.question.itemsPerPage,
       info: this.question.helper,
     };
