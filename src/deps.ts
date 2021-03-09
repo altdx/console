@@ -9,7 +9,7 @@ export {
   Input,
   Number,
   Secret,
-  Checkbox,
   Confirm,
+  Checkbox,
   prompt,
 } from "https://deno.land/x/cliffy@v0.17.2/prompt/mod.ts";

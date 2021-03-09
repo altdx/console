@@ -1,12 +1,12 @@
 export * from "./ConsolePrompt.ts";
 export * from "./AbstractConsolePrompt.ts";
 
-import { Input, Number, Secret } from "../deps.ts";
+import { Input, Number, Secret, Confirm } from "../deps.ts";
 
 /**
  * Type value type.
  */
-export type TypeValueType = typeof Input | typeof Number | typeof Secret;
+export type TypeValueType = typeof Input | typeof Number | typeof Secret | typeof Confirm;
 
 /**
  * Name value type.
