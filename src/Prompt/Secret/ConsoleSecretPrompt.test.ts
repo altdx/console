@@ -1,5 +1,5 @@
-import {assertEquals, Secret} from "../../deps.ts";
-import {ConsoleSecretPrompt, ConsoleSecretPromptQuestionType} from "./mod.ts";
+import { assertEquals, Secret } from "../../deps.ts";
+import { ConsoleSecretPrompt, ConsoleSecretPromptQuestionType } from "./mod.ts";
 
 Deno.test("Altdx Console Secret Prompt - Should have right options", () => {
   const consoleSecret = new ConsoleSecretPrompt("Password: ");
@@ -18,7 +18,10 @@ Deno.test("Altdx Console Secret Prompt - Should have right options", () => {
 
 Deno.test("Altdx Console Secret Prompt - Should set and get name", () => {
   const consoleSecret = new ConsoleSecretPrompt("Password: ");
-  assertEquals(true, consoleSecret.setName("price") instanceof ConsoleSecretPrompt);
+  assertEquals(
+    true,
+    consoleSecret.setName("price") instanceof ConsoleSecretPrompt,
+  );
   assertEquals("price", consoleSecret.getName());
 });
 

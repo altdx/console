@@ -1,6 +1,9 @@
 import { Toggle } from "../../deps.ts";
 import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
-import {ConsoleTogglePromptQuestionType, IConsoleTogglePrompt} from "./mod.ts";
+import {
+  ConsoleTogglePromptQuestionType,
+  IConsoleTogglePrompt,
+} from "./mod.ts";
 
 /**
  * Toggle console prompt.

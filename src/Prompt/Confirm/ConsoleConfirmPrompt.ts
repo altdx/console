@@ -1,6 +1,9 @@
 import { Confirm } from "../../deps.ts";
 import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
-import {ConsoleConfirmPromptQuestionType, IConsoleConfirmPrompt} from "./mod.ts";
+import {
+  ConsoleConfirmPromptQuestionType,
+  IConsoleConfirmPrompt,
+} from "./mod.ts";
 
 /**
  * Confirm console prompt.

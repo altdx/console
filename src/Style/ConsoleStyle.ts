@@ -1,5 +1,4 @@
-// @ts-nocheck @ts-ignore
-import colors from "ansi-colors";
+import colors from "https://cdn.skypack.dev/ansi-colors@4.1.1?dts";
 import { ColorType, IConsoleStyle, ModifierType } from "./mod.ts";
 
 /**

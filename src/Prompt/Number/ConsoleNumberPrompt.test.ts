@@ -1,5 +1,5 @@
-import {assertEquals, Number} from "../../deps.ts";
-import {ConsoleNumberPrompt, ConsoleNumberPromptQuestionType} from "./mod.ts";
+import { assertEquals, Number } from "../../deps.ts";
+import { ConsoleNumberPrompt, ConsoleNumberPromptQuestionType } from "./mod.ts";
 
 Deno.test("Altdx Console Number Prompt - Should have right options", () => {
   const consoleNumber = new ConsoleNumberPrompt("Price: ");
@@ -22,7 +22,10 @@ Deno.test("Altdx Console Number Prompt - Should have right options", () => {
 
 Deno.test("Altdx Console Number Prompt - Should set and get name", () => {
   const consoleNumber = new ConsoleNumberPrompt("Price: ");
-  assertEquals(true, consoleNumber.setName("price") instanceof ConsoleNumberPrompt);
+  assertEquals(
+    true,
+    consoleNumber.setName("price") instanceof ConsoleNumberPrompt,
+  );
   assertEquals("price", consoleNumber.getName());
 });
 
@@ -57,8 +60,6 @@ Deno.test("Altdx Console Number Prompt - Should set float input with format", ()
   assertEquals(4, consoleNumber.getQuestion().format);
 });
 
-
-
 Deno.test("Altdx Console Number Prompt - Should set and get suggestions", () => {
   const consoleNumber = new ConsoleNumberPrompt("Price: ");
 
@@ -75,7 +76,10 @@ Deno.test("Altdx Console Number Prompt - Should set and get suggestions", () => 
 Deno.test("Altdx Console Number Prompt - Should set and get items per page", () => {
   const consoleNumber = new ConsoleNumberPrompt("Price: ");
 
-  assertEquals(true, consoleNumber.setItemsPerPage(45) instanceof ConsoleNumberPrompt);
+  assertEquals(
+    true,
+    consoleNumber.setItemsPerPage(45) instanceof ConsoleNumberPrompt,
+  );
   assertEquals(45, consoleNumber.getItemsPerPage());
 });
 

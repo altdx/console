@@ -1,17 +1,15 @@
-import {ConsolePromptQuestionType, IConsolePrompt} from "../mod.ts";
+// deno-lint-ignore-file
+import { ConsolePromptQuestionType, IConsolePrompt } from "../mod.ts";
 
 export * from "./ConsoleConfirmPrompt.ts";
 
 /**
  * Confirm console prompt question type.
  */
-export type ConsoleConfirmPromptQuestionType = ConsolePromptQuestionType & {
-
-};
+export type ConsoleConfirmPromptQuestionType = ConsolePromptQuestionType & {};
 
 /**
  * Confirm console prompt interface.
  */
 export interface IConsoleConfirmPrompt extends IConsolePrompt {
-
 }

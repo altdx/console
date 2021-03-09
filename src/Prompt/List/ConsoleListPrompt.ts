@@ -1,6 +1,6 @@
-import {List} from "../../deps.ts";
+import { List } from "../../deps.ts";
 import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
-import {ConsoleListPromptQuestionType, IConsoleListPrompt} from "./mod.ts";
+import { ConsoleListPromptQuestionType, IConsoleListPrompt } from "./mod.ts";
 
 /**
  * List console prompt.
@@ -30,7 +30,7 @@ export class ConsoleListPrompt extends AbstractConsolePrompt
       itemsPerPage: 10,
       helper: false,
       suggestions: null,
-      separator: ","
+      separator: ",",
     };
   }
 

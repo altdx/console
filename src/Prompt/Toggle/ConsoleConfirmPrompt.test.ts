@@ -1,5 +1,5 @@
-import {assertEquals, Toggle} from "../../deps.ts";
-import {ConsoleTogglePrompt, ConsoleTogglePromptQuestionType} from "./mod.ts";
+import { assertEquals, Toggle } from "../../deps.ts";
+import { ConsoleTogglePrompt, ConsoleTogglePromptQuestionType } from "./mod.ts";
 
 Deno.test("Altdx Console Toggle Prompt - Should have right options", () => {
   const consoleToggle = new ConsoleTogglePrompt("Confirm? ");
@@ -15,7 +15,10 @@ Deno.test("Altdx Console Toggle Prompt - Should have right options", () => {
 
 Deno.test("Altdx Console Toggle Prompt - Should set and get name", () => {
   const consoleToggle = new ConsoleTogglePrompt("Confirm? ");
-  assertEquals(true, consoleToggle.setName("confirm") instanceof ConsoleTogglePrompt);
+  assertEquals(
+    true,
+    consoleToggle.setName("confirm") instanceof ConsoleTogglePrompt,
+  );
   assertEquals("confirm", consoleToggle.getName());
 });
 

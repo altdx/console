@@ -15,7 +15,7 @@ Deno.test("Altdx Console List Prompt - Should have right options", () => {
     suggestions: null,
     itemsPerPage: 10,
     helper: false,
-    separator: ","
+    separator: ",",
   };
 
   assertEquals(question, consoleList.getQuestion());
@@ -72,7 +72,10 @@ Deno.test("Altdx Console List Prompt - Should set and get suggestions", () => {
 Deno.test("Altdx Console List Prompt - Should set and get items per page", () => {
   const consoleList = new ConsoleListPrompt("Your name: ");
 
-  assertEquals(true, consoleList.setItemsPerPage(45) instanceof ConsoleListPrompt);
+  assertEquals(
+    true,
+    consoleList.setItemsPerPage(45) instanceof ConsoleListPrompt,
+  );
   assertEquals(45, consoleList.getItemsPerPage());
 });
 
@@ -84,7 +87,10 @@ Deno.test("Altdx Console List Prompt - Should set and get helper", () => {
 
 Deno.test("Altdx Console List Prompt - Should set and get separator", () => {
   const consoleList = new ConsoleListPrompt("");
-  assertEquals(true, consoleList.setSeparator("|") instanceof ConsoleListPrompt);
+  assertEquals(
+    true,
+    consoleList.setSeparator("|") instanceof ConsoleListPrompt,
+  );
   assertEquals("|", consoleList.getSeparator());
 });
 
@@ -102,7 +108,7 @@ Deno.test("Altdx Console List Prompt - Should parse options", () => {
     list: true,
     maxRows: 10,
     info: false,
-    separator: ","
+    separator: ",",
   };
 
   assertEquals(question, consoleList.getParseQuestion());

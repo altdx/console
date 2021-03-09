@@ -1,6 +1,9 @@
 import { Number } from "../../deps.ts";
 import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
-import {ConsoleNumberPromptQuestionType, IConsoleNumberPrompt} from "./mod.ts";
+import {
+  ConsoleNumberPromptQuestionType,
+  IConsoleNumberPrompt,
+} from "./mod.ts";
 
 /**
  * Number console prompt.

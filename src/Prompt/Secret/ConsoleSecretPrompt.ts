@@ -1,6 +1,9 @@
 import { Secret } from "../../deps.ts";
 import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
-import {ConsoleSecretPromptQuestionType, IConsoleSecretPrompt} from "./mod.ts";
+import {
+  ConsoleSecretPromptQuestionType,
+  IConsoleSecretPrompt,
+} from "./mod.ts";
 
 /**
  * Secret console prompt.

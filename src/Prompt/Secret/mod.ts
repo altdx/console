@@ -1,4 +1,4 @@
-import {ConsolePromptQuestionType, IConsolePrompt} from "../mod.ts";
+import { ConsolePromptQuestionType, IConsolePrompt } from "../mod.ts";
 
 export * from "./ConsoleSecretPrompt.ts";
 

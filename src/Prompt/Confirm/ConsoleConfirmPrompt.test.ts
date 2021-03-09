@@ -1,5 +1,8 @@
-import {assertEquals, Confirm} from "../../deps.ts";
-import {ConsoleConfirmPrompt, ConsoleConfirmPromptQuestionType} from "./mod.ts";
+import { assertEquals, Confirm } from "../../deps.ts";
+import {
+  ConsoleConfirmPrompt,
+  ConsoleConfirmPromptQuestionType,
+} from "./mod.ts";
 
 Deno.test("Altdx Console Confirm Prompt - Should have right options", () => {
   const consoleConfirm = new ConsoleConfirmPrompt("Confirm? ");
@@ -15,7 +18,10 @@ Deno.test("Altdx Console Confirm Prompt - Should have right options", () => {
 
 Deno.test("Altdx Console Confirm Prompt - Should set and get name", () => {
   const consoleConfirm = new ConsoleConfirmPrompt("Confirm? ");
-  assertEquals(true, consoleConfirm.setName("confirm") instanceof ConsoleConfirmPrompt);
+  assertEquals(
+    true,
+    consoleConfirm.setName("confirm") instanceof ConsoleConfirmPrompt,
+  );
   assertEquals("confirm", consoleConfirm.getName());
 });
 
