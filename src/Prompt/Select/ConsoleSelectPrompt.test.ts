@@ -1,5 +1,9 @@
-import {assertEquals, Select} from "../../deps.ts";
-import {ConsoleSelectPrompt, ConsoleSelectPromptQuestionType, SelectOptionType} from "./mod.ts";
+import { assertEquals, Select } from "../../deps.ts";
+import {
+  ConsoleSelectPrompt,
+  ConsoleSelectPromptQuestionType,
+  SelectOptionType,
+} from "./mod.ts";
 
 Deno.test("Altdx Console Select Prompt - Should have right options", () => {
   const consoleSelect = new ConsoleSelectPrompt("Select a value");
@@ -37,7 +41,10 @@ Deno.test("Altdx Console Select Prompt - Should have message", () => {
 
 Deno.test("Altdx Console Select Prompt - Should set and get items per page", () => {
   const consoleSelect = new ConsoleSelectPrompt("Select a value");
-  assertEquals(true, consoleSelect.setItemsPerPage(5) instanceof ConsoleSelectPrompt);
+  assertEquals(
+    true,
+    consoleSelect.setItemsPerPage(5) instanceof ConsoleSelectPrompt,
+  );
   assertEquals(5, consoleSelect.getItemsPerPage());
 });
 
@@ -46,25 +53,32 @@ Deno.test("Altdx Console Select Prompt - Should manage options", () => {
     {
       name: "color",
       value: "red",
-    }
+    },
   ];
 
   const consoleSelect = new ConsoleSelectPrompt("Select a value");
-  assertEquals(true, consoleSelect.setOptions(options) instanceof ConsoleSelectPrompt);
+  assertEquals(
+    true,
+    consoleSelect.setOptions(options) instanceof ConsoleSelectPrompt,
+  );
   assertEquals(options, consoleSelect.getOptions());
   consoleSelect.addOption("John", "name");
   assertEquals([
-    {name: "color", value: "red"}, {name: "name", value: "John"}
+    { name: "color", value: "red" },
+    { name: "name", value: "John" },
   ], consoleSelect.getOptions());
 });
 
 Deno.test("Altdx Console Select Prompt - Should set search value", () => {
   const consoleSelect = new ConsoleSelectPrompt("Select a value");
-  assertEquals(true, consoleSelect.search("filter") instanceof ConsoleSelectPrompt);
+  assertEquals(
+    true,
+    consoleSelect.search("filter") instanceof ConsoleSelectPrompt,
+  );
   assertEquals("filter", consoleSelect.getQuestion().search);
 });
 
-Deno.test("Altdx Console Number Prompt - Should parse options", () => {
+Deno.test("Altdx Console Select Prompt - Should parse options", () => {
   const consoleSelect = new ConsoleSelectPrompt("");
 
   const question: unknown = {
@@ -72,7 +86,7 @@ Deno.test("Altdx Console Number Prompt - Should parse options", () => {
     type: Select,
     message: "",
     maxRows: 10,
-    options:[],
+    options: [],
     search: false,
     searchLabel: undefined,
   };

@@ -2,6 +2,7 @@ export * from "./ConsolePrompt.ts";
 export * from "./AbstractConsolePrompt.ts";
 
 import {
+  Checkbox,
   Confirm,
   Input,
   List,
@@ -21,7 +22,8 @@ export type TypeValueType =
   | typeof Confirm
   | typeof Toggle
   | typeof List
-  | typeof Select;
+  | typeof Select
+  | typeof Checkbox;
 
 /**
  * Name value type.

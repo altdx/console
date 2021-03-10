@@ -17,11 +17,7 @@ export interface IConsoleSelectPrompt extends IConsolePrompt {
   setItemsPerPage: (count: number) => IConsoleSelectPrompt;
   getItemsPerPage: () => number;
   setOptions: (options: SelectOptionType[]) => IConsoleSelectPrompt;
-  addOption: (
-    value: string,
-    name?: string,
-    disabled?: boolean,
-  ) => IConsoleSelectPrompt;
+  addOption: (value: string, name?: string) => IConsoleSelectPrompt;
   addSeparator: (sep: string) => IConsoleSelectPrompt;
   getOptions: () => SelectOptionType[];
   search: (label: string | null) => IConsoleSelectPrompt;

@@ -1,24 +1,26 @@
-import { Select } from "../../deps.ts";
+import { Checkbox } from "../../deps.ts";
 import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
 import {
-  ConsoleSelectPromptQuestionType,
-  IConsoleSelectPrompt,
-  SelectOptionType,
+  CheckboxOptionType,
+  ConsoleCheckboxPromptQuestionType,
+  IConsoleCheckboxPrompt,
 } from "./mod.ts";
 
-export class ConsoleSelectPrompt extends AbstractConsolePrompt
-  implements IConsoleSelectPrompt {
-  protected question: ConsoleSelectPromptQuestionType;
+export class ConsoleCheckboxPrompt extends AbstractConsolePrompt
+  implements IConsoleCheckboxPrompt {
+  protected question: ConsoleCheckboxPromptQuestionType;
 
   constructor(message: MessageValueType) {
     super();
     this.question = {
       ...this.getQuestion(),
       message: message,
-      type: Select,
+      type: Checkbox,
       itemsPerPage: 10,
       options: [],
       search: null,
+      max: null,
+      min: null,
     };
   }
 
@@ -26,7 +28,7 @@ export class ConsoleSelectPrompt extends AbstractConsolePrompt
     return this.question.itemsPerPage;
   }
 
-  public setItemsPerPage(count: number): IConsoleSelectPrompt {
+  public setItemsPerPage(count: number): IConsoleCheckboxPrompt {
     this.question.itemsPerPage = count;
 
     return this;
@@ -35,35 +37,47 @@ export class ConsoleSelectPrompt extends AbstractConsolePrompt
   public addOption(
     value: string,
     name?: string,
-  ): IConsoleSelectPrompt {
+  ): IConsoleCheckboxPrompt {
     this.question.options.push({ name, value });
 
     return this;
   }
 
-  public getOptions(): SelectOptionType[] {
+  public getOptions(): CheckboxOptionType[] {
     return this.question.options;
   }
 
-  public setOptions(options: SelectOptionType[]): IConsoleSelectPrompt {
+  public setOptions(options: CheckboxOptionType[]): IConsoleCheckboxPrompt {
     this.question.options = options;
 
     return this;
   }
 
-  public addSeparator(sep: string): IConsoleSelectPrompt {
-    this.question.options.push(Select.separator(sep));
+  public addSeparator(sep: string): IConsoleCheckboxPrompt {
+    this.question.options.push(Checkbox.separator(sep));
 
     return this;
   }
 
-  public search(label: string | null): IConsoleSelectPrompt {
+  public search(label: string | null): IConsoleCheckboxPrompt {
     this.question.search = label;
 
     return this;
   }
 
-  public getQuestion(): ConsoleSelectPromptQuestionType {
+  public min(count: number | null): IConsoleCheckboxPrompt {
+    this.question.min = count;
+
+    return this;
+  }
+
+  public max(count: number | null): IConsoleCheckboxPrompt {
+    this.question.max = count;
+
+    return this;
+  }
+
+  public getQuestion(): ConsoleCheckboxPromptQuestionType {
     return this.question;
   }
 
@@ -76,6 +90,8 @@ export class ConsoleSelectPrompt extends AbstractConsolePrompt
       options: this.question.options,
       search: this.question.search !== null,
       searchLabel: this.question.search ?? undefined,
+      minOptions: this.question.min ?? undefined,
+      maxOptions: this.question.max ?? undefined,
     };
   }
 }
