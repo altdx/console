@@ -1,4 +1,4 @@
-import { assertEquals, Checkbox } from "../../deps.ts";
+import {assertEquals, Checkbox, Mock} from "../../deps.ts";
 import {
   CheckboxOptionType,
   ConsoleCheckboxPrompt,
@@ -104,4 +104,14 @@ Deno.test("Altdx Console Checkbox Prompt - Should parse options", () => {
   };
 
   assertEquals(question, consoleCheckbox.getParseQuestion());
+});
+
+Deno.test("Altdx Console Checkbox Prompt - Should prompt question", async () => {
+  const mock = new Mock();
+  mock.spyOn(Checkbox, "prompt");
+
+  const checkbox = new ConsoleCheckboxPrompt("");
+  await checkbox.prompt();
+
+  assertEquals(true, mock.haveBeenCalledWith(checkbox.getParseQuestion()));
 });

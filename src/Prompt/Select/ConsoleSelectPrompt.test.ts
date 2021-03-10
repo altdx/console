@@ -1,4 +1,4 @@
-import { assertEquals, Select } from "../../deps.ts";
+import {assertEquals, Mock, Select} from "../../deps.ts";
 import {
   ConsoleSelectPrompt,
   ConsoleSelectPromptQuestionType,
@@ -92,4 +92,12 @@ Deno.test("Altdx Console Select Prompt - Should parse options", () => {
   };
 
   assertEquals(question, consoleSelect.getParseQuestion());
+});
+
+Deno.test("Altdx Console Select Prompt - Should prompt question", async () => {
+  const mock = new Mock();
+  mock.spyOn(Select, "prompt");
+  const select = new ConsoleSelectPrompt("");
+  await select.prompt();
+  assertEquals(true, mock.haveBeenCalledWith(select.getParseQuestion()));
 });

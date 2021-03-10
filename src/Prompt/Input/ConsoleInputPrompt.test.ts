@@ -1,4 +1,4 @@
-import { assertEquals, Input } from "../../deps.ts";
+import { assertEquals, Input, Mock } from "../../deps.ts";
 import { ConsoleInputPrompt, ConsoleInputPromptQuestionType } from "./mod.ts";
 
 Deno.test("Altdx Console Input Prompt - Should have right options", () => {
@@ -89,4 +89,14 @@ Deno.test("Altdx Console Input Prompt - Should parse options", () => {
   };
 
   assertEquals(question, input.getParseQuestion());
+});
+
+Deno.test("Altdx Console Input Prompt - Should prompt question", async () => {
+  const mock = new Mock();
+  mock.spyOn(Input, "prompt");
+
+  const input = new ConsoleInputPrompt("");
+  await input.prompt();
+
+  assertEquals(true, mock.haveBeenCalledWith(input.getParseQuestion()));
 });

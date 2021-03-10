@@ -1,4 +1,4 @@
-import { assertEquals, Confirm } from "../../deps.ts";
+import {assertEquals, Confirm, Mock} from "../../deps.ts";
 import {
   ConsoleConfirmPrompt,
   ConsoleConfirmPromptQuestionType,
@@ -33,4 +33,14 @@ Deno.test("Altdx Console Confirm Prompt - Should have Confirm type", () => {
 Deno.test("Altdx Console Confirm Prompt - Should have message", () => {
   const consoleConfirm = new ConsoleConfirmPrompt("Confirm? ");
   assertEquals("Confirm? ", consoleConfirm.getMessage());
+});
+
+Deno.test("Altdx Console Confirm Prompt - Should prompt question", async () => {
+  const mock = new Mock();
+  mock.spyOn(Confirm, "prompt");
+
+  const confirm = new ConsoleConfirmPrompt("");
+  await confirm.prompt();
+
+  assertEquals(true, mock.haveBeenCalledWith(confirm.getParseQuestion()));
 });

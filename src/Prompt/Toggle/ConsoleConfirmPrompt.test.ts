@@ -1,4 +1,4 @@
-import { assertEquals, Toggle } from "../../deps.ts";
+import {assertEquals, Mock, Toggle} from "../../deps.ts";
 import { ConsoleTogglePrompt, ConsoleTogglePromptQuestionType } from "./mod.ts";
 
 Deno.test("Altdx Console Toggle Prompt - Should have right options", () => {
@@ -30,4 +30,12 @@ Deno.test("Altdx Console Toggle Prompt - Should have Toggle type", () => {
 Deno.test("Altdx Console Toggle Prompt - Should have message", () => {
   const consoleToggle = new ConsoleTogglePrompt("Confirm? ");
   assertEquals("Confirm? ", consoleToggle.getMessage());
+});
+
+Deno.test("Altdx Console Toggle Prompt - Should prompt question", async () => {
+  const mock = new Mock();
+  mock.spyOn(Toggle, "prompt");
+  const toggle = new ConsoleTogglePrompt("");
+  await toggle.prompt();
+  assertEquals(true, mock.haveBeenCalledWith(toggle.getParseQuestion()));
 });

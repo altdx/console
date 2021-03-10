@@ -1,4 +1,6 @@
+// deno-lint-ignore-file ban-ts-comment
 import { IConsolePrompt } from "./mod.ts";
+import { prompt } from "../deps.ts";
 
 /**
  * Input Console Prompt.
@@ -36,5 +38,19 @@ export class ConsolePrompt {
    */
   public getPrompts(): IConsolePrompt[] {
     return this.prompts;
+  }
+
+  /**
+   * @inheritDoc IConsolePrompt.prompt
+   */
+  public async prompt<T>(): Promise<T> {
+    const prompts: unknown[] = [];
+
+    this.prompts.map((prompt) => {
+      prompts.push(prompt.getParseQuestion());
+    });
+
+    // @ts-ignore
+    return await prompt(prompts);
   }
 }

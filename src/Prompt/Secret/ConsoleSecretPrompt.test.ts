@@ -1,4 +1,4 @@
-import { assertEquals, Secret } from "../../deps.ts";
+import {assertEquals, Mock, Secret} from "../../deps.ts";
 import { ConsoleSecretPrompt, ConsoleSecretPromptQuestionType } from "./mod.ts";
 
 Deno.test("Altdx Console Secret Prompt - Should have right options", () => {
@@ -49,4 +49,12 @@ Deno.test("Altdx Console Secret Prompt - Should show or hide input", () => {
   assertEquals(true, consoleSecret.getQuestion().show);
   assertEquals(true, consoleSecret.hide() instanceof ConsoleSecretPrompt);
   assertEquals(false, consoleSecret.getQuestion().show);
+});
+
+Deno.test("Altdx Console Secret Prompt - Should prompt question", async () => {
+  const mock = new Mock();
+  mock.spyOn(Secret, "prompt");
+  const secret = new ConsoleSecretPrompt("");
+  await secret.prompt();
+  assertEquals(true, mock.haveBeenCalledWith(secret.getParseQuestion()));
 });

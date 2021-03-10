@@ -1,4 +1,4 @@
-import { assertEquals, Number } from "../../deps.ts";
+import {assertEquals, Mock, Number} from "../../deps.ts";
 import { ConsoleNumberPrompt, ConsoleNumberPromptQuestionType } from "./mod.ts";
 
 Deno.test("Altdx Console Number Prompt - Should have right options", () => {
@@ -108,4 +108,14 @@ Deno.test("Altdx Console Number Prompt - Should parse options", () => {
   };
 
   assertEquals(question, consoleNumber.getParseQuestion());
+});
+
+Deno.test("Altdx Console Number Prompt - Should prompt question", async () => {
+  const mock = new Mock();
+  mock.spyOn(Number, "prompt");
+
+  const numberConsole = new ConsoleNumberPrompt("");
+  await numberConsole.prompt();
+
+  assertEquals(true, mock.haveBeenCalledWith(numberConsole.getParseQuestion()));
 });

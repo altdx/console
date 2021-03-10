@@ -1,4 +1,4 @@
-import { assertEquals, List } from "../../deps.ts";
+import {assertEquals, List, Mock} from "../../deps.ts";
 import { ConsoleListPrompt, ConsoleListPromptQuestionType } from "./mod.ts";
 
 Deno.test("Altdx Console List Prompt - Should have right options", () => {
@@ -112,4 +112,14 @@ Deno.test("Altdx Console List Prompt - Should parse options", () => {
   };
 
   assertEquals(question, consoleList.getParseQuestion());
+});
+
+Deno.test("Altdx Console List Prompt - Should prompt question", async () => {
+  const mock = new Mock();
+  mock.spyOn(List, "prompt");
+
+  const list = new ConsoleListPrompt("");
+  await list.prompt();
+
+  assertEquals(true, mock.haveBeenCalledWith(list.getParseQuestion()));
 });
