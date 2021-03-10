@@ -5,7 +5,6 @@ export * from "./ConsoleSelectPrompt.ts";
 export type SelectOptionType = {
   name?: string;
   value: string;
-  disabled?: boolean;
 };
 
 export type ConsoleSelectPromptQuestionType = ConsolePromptQuestionType & {

@@ -1,4 +1,3 @@
-// Todo: Make tests
 import { Select } from "../../deps.ts";
 import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
 import {
@@ -7,21 +6,11 @@ import {
   SelectOptionType,
 } from "./mod.ts";
 
-/**
- * Select console prompt.
- */
 export class ConsoleSelectPrompt extends AbstractConsolePrompt
   implements IConsoleSelectPrompt {
-  /**
-   * Question type for input prompt.
-   */
+
   protected question: ConsoleSelectPromptQuestionType;
 
-  /**
-   * Constructor.
-   *
-   * @param message - Message to display when the prompt is rendered in the terminal.
-   */
   constructor(message: MessageValueType) {
     super();
     this.question = {
@@ -30,19 +19,14 @@ export class ConsoleSelectPrompt extends AbstractConsolePrompt
       type: Select,
       itemsPerPage: 10,
       options: [],
+      search: null,
     };
   }
 
-  /**
-   * @inheritDoc IConsoleSelectPrompt.getItemsPerPage
-   */
   public getItemsPerPage(): number {
     return this.question.itemsPerPage;
   }
 
-  /**
-   * @inheritDoc IConsoleSelectPrompt.setItemsPerPage
-   */
   public setItemsPerPage(count: number): IConsoleSelectPrompt {
     this.question.itemsPerPage = count;
 
@@ -52,9 +36,8 @@ export class ConsoleSelectPrompt extends AbstractConsolePrompt
   public addOption(
     value: string,
     name?: string,
-    disabled = true,
   ): IConsoleSelectPrompt {
-    this.question.options.push({ name, value, disabled });
+    this.question.options.push({ name, value });
 
     return this;
   }
@@ -81,22 +64,15 @@ export class ConsoleSelectPrompt extends AbstractConsolePrompt
     return this;
   }
 
-  /**
-   * @inheritDoc IConsolePrompt.getQuestion
-   */
   public getQuestion(): ConsoleSelectPromptQuestionType {
     return this.question;
   }
 
-  /**
-   * @inheritDoc IConsolePrompt.getParseQuestion
-   */
   public getParseQuestion(): unknown {
     return {
       name: this.question.name,
       type: this.question.type,
       message: this.question.message ?? "",
-      list: this.question.itemsPerPage !== 0,
       maxRows: this.question.itemsPerPage,
       options: this.question.options,
       search: this.question.search !== null,
