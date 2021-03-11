@@ -89,9 +89,14 @@ export class ConsoleCommand implements IConsoleCommand {
       // @ts-ignore
       const optionValues = request[`get${type}`](key);
 
+      let prefix = "-";
+      if (type === "LongOption") {
+        prefix = "--";
+      }
+
       // @ts-ignore
       if (required && !request[`has${type}`](key)) {
-        this.errorMessage = `Option ${key} is required.`
+        this.errorMessage = `Option ${prefix + key} is required.`
 
         return false;
       }
@@ -104,7 +109,7 @@ export class ConsoleCommand implements IConsoleCommand {
         for (let k = 0; k < optionValues.length; k++) {
           const optionValue = optionValues[k];
           if (optionValue !== true && optionValue !== false && !constraint.test(optionValue)) {
-            this.errorMessage = `Value of ${key} option does not match.`;
+            this.errorMessage = `Value of ${prefix + key} option does not match.`;
             return false;
           }
         }

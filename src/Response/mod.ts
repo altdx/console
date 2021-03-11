@@ -7,16 +7,18 @@ export enum EResponseType {
   COMMAND_NOT_FOUND_MESSAGE = "Command not found.",
   MISSING_OPTION = 400,
   MISSING_OPTION_MESSAGE = "Missing options:",
+  COMMAND_REQUIREMENTS = 400,
   BAD_OPTION = 406,
   BAD_OPTION_MESSAGE = "Not valid option.",
   SUCCESS = 0,
-  SUCCESS_MESSAGE = "OK",
+  SUCCESS_MESSAGE = "OK"
 }
 
 export type StatusType =
   | EResponseType.SUCCESS
   | EResponseType.NOT_FOUND
   | EResponseType.COMMAND_NOT_FOUND
+  | EResponseType.COMMAND_REQUIREMENTS
   | EResponseType.MISSING_OPTION;
 
 /**

@@ -147,4 +147,9 @@ export interface IConsoleCommandCollection {
    * @param command - Name of command.
    */
   remove: (command: string) => IConsoleCommandCollection;
+
+  /**
+   * Remove all commands from collection.
+   */
+  removeAll: () => IConsoleCommandCollection;
 }

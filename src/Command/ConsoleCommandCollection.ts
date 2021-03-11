@@ -9,7 +9,7 @@ export class ConsoleCommandCollection implements IConsoleCommandCollection {
   /**
    * @inheritDoc IConsoleCommandCollection.add
    */
-  public add(command: IConsoleCommand): this {
+  public add(command: IConsoleCommand): IConsoleCommandCollection {
     this.collection[command.getName()] = command;
 
     return this;
@@ -46,8 +46,17 @@ export class ConsoleCommandCollection implements IConsoleCommandCollection {
   /**
    * @inheritDoc IConsoleCommandCollection.remove
    */
-  public remove(command: string): this {
+  public remove(command: string): IConsoleCommandCollection {
     delete this.collection[command];
+
+    return this;
+  }
+
+  /**
+   * @inheritDoc IConsoleCommandCollection.removeAll
+   */
+  public removeAll(): IConsoleCommandCollection {
+    this.collection = {};
 
     return this;
   }
