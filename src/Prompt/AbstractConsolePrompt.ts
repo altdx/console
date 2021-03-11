@@ -8,6 +8,8 @@ import {
 
 import { Input, prompt } from "../deps.ts";
 
+// Todo: Add validation callback
+
 /**
  * Prompt base class.
  */
