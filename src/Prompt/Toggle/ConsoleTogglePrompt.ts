@@ -3,6 +3,7 @@ import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
 import {
   ConsoleTogglePromptQuestionType,
   IConsoleTogglePrompt,
+  ToggleValidatorCallback,
 } from "./mod.ts";
 
 /**
@@ -26,7 +27,17 @@ export class ConsoleTogglePrompt extends AbstractConsolePrompt
       ...this.getQuestion(),
       type: Toggle,
       message: message,
+      validator: null,
     };
+  }
+
+  /**
+   * @inheritDoc IConsoleTogglePrompt.validator
+   */
+  validator(callback: ToggleValidatorCallback): IConsoleTogglePrompt {
+    this.question.validator = callback;
+
+    return this;
   }
 
   /**
@@ -44,6 +55,7 @@ export class ConsoleTogglePrompt extends AbstractConsolePrompt
       name: this.question.name,
       type: this.question.type,
       message: this.question.message ?? "",
+      validate: this.question.validator ?? undefined,
     };
   }
 }

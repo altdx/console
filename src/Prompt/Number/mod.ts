@@ -2,6 +2,8 @@ import { ConsolePromptQuestionType, IConsolePrompt } from "../mod.ts";
 
 export * from "./ConsoleNumberPrompt.ts";
 
+export type NumberValidatorCallback = ((value: number) => boolean | string) | null;
+
 /**
  * Input console prompt question type.
  */
@@ -40,6 +42,11 @@ export type ConsoleNumberPromptQuestionType = ConsolePromptQuestionType & {
    * Show or hide some usage information. Defaults to false.
    */
   helper: boolean;
+
+  /**
+   * Validator callback.
+   */
+  validator?: NumberValidatorCallback;
 };
 
 /**
@@ -114,4 +121,9 @@ export interface IConsoleNumberPrompt extends IConsolePrompt {
    * Hide some usage information.
    */
   hideHelper: () => IConsoleNumberPrompt;
+
+  /**
+   * Should return true if the value is valid, and an error message String otherwise. If false is returned, a default error message is shown.
+   */
+  validator(callback: NumberValidatorCallback): IConsoleNumberPrompt;
 }

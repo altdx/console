@@ -1,5 +1,5 @@
 import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
-import { ConsoleInputPromptQuestionType, IConsoleInputPrompt } from "./mod.ts";
+import {ConsoleInputPromptQuestionType, IConsoleInputPrompt, InputValidatorCallback} from "./mod.ts";
 
 /**
  * Input console prompt.
@@ -27,6 +27,7 @@ export class ConsoleInputPrompt extends AbstractConsolePrompt
     this.question = {
       ...this.getQuestion(),
       message: message,
+      validator: null,
       min: null,
       max: null,
       itemsPerPage: 10,
@@ -119,6 +120,15 @@ export class ConsoleInputPrompt extends AbstractConsolePrompt
   }
 
   /**
+   * @inheritDoc IConsoleInputPrompt.validator
+   */
+  validator(callback: InputValidatorCallback): IConsoleInputPrompt {
+    this.question.validator = callback;
+
+    return this;
+  }
+
+  /**
    * @inheritDoc IConsolePrompt.getQuestion
    */
   public getQuestion(): ConsoleInputPromptQuestionType {
@@ -133,6 +143,7 @@ export class ConsoleInputPrompt extends AbstractConsolePrompt
       name: this.question.name,
       type: this.question.type,
       message: this.question.message ?? "",
+      validate: this.question.validator ?? undefined,
       minLength: this.question.min ?? undefined,
       maxLength: this.question.max ?? undefined,
       suggestions: this.question.suggestions ?? undefined,

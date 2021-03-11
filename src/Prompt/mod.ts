@@ -48,13 +48,15 @@ export type ConsolePromptQuestionType = {
 
   /**
    * Used as the key for the answer on the returned values (answers) object.
+   *
+   * @default "answer"
    */
   name: NameValueType;
 
   /**
    * The message to display when the prompt is rendered in the terminal.
    *
-   * @default ''
+   * @default ""
    */
   message?: MessageValueType;
 };

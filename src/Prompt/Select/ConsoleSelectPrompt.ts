@@ -4,6 +4,7 @@ import {
   ConsoleSelectPromptQuestionType,
   IConsoleSelectPrompt,
   SelectOptionType,
+  SelectValidatorCallback,
 } from "./mod.ts";
 
 export class ConsoleSelectPrompt extends AbstractConsolePrompt
@@ -16,6 +17,7 @@ export class ConsoleSelectPrompt extends AbstractConsolePrompt
       ...this.getQuestion(),
       message: message,
       type: Select,
+      validator: null,
       itemsPerPage: 10,
       options: [],
       search: null,
@@ -63,6 +65,15 @@ export class ConsoleSelectPrompt extends AbstractConsolePrompt
     return this;
   }
 
+  /**
+   * @inheritDoc IConsoleSelectPrompt.validator
+   */
+  validator(callback: SelectValidatorCallback): IConsoleSelectPrompt {
+    this.question.validator = callback;
+
+    return this;
+  }
+
   public getQuestion(): ConsoleSelectPromptQuestionType {
     return this.question;
   }
@@ -72,6 +83,7 @@ export class ConsoleSelectPrompt extends AbstractConsolePrompt
       name: this.question.name,
       type: this.question.type,
       message: this.question.message ?? "",
+      validate: this.question.validator ?? undefined,
       maxRows: this.question.itemsPerPage,
       options: this.question.options,
       search: this.question.search !== null,

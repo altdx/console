@@ -2,6 +2,8 @@ import { ConsolePromptQuestionType, IConsolePrompt } from "../mod.ts";
 
 export * from "./ConsoleInputPrompt.ts";
 
+export type InputValidatorCallback = ((value: string) => boolean | string) | null;
+
 /**
  * Input console prompt question type.
  */
@@ -30,6 +32,11 @@ export type ConsoleInputPromptQuestionType = ConsolePromptQuestionType & {
    * Show or hide some usage information. Defaults to false.
    */
   helper: boolean;
+
+  /**
+   * Validator callback.
+   */
+  validator?: InputValidatorCallback;
 };
 
 /**
@@ -86,4 +93,9 @@ export interface IConsoleInputPrompt extends IConsolePrompt {
    * Hide some usage information.
    */
   hideHelper: () => IConsoleInputPrompt;
+
+  /**
+   * Should return true if the value is valid, and an error message String otherwise. If false is returned, a default error message is shown.
+   */
+  validator(callback: InputValidatorCallback): IConsoleInputPrompt;
 }

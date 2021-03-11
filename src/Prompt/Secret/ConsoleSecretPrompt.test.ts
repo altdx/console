@@ -8,6 +8,7 @@ Deno.test("Altdx Console Secret Prompt - Should have right options", () => {
     name: "answer",
     type: Secret,
     message: "Password: ",
+    validator: null,
     min: null,
     max: null,
     show: true,
@@ -49,6 +50,22 @@ Deno.test("Altdx Console Secret Prompt - Should show or hide input", () => {
   assertEquals(true, consoleSecret.getQuestion().show);
   assertEquals(true, consoleSecret.hide() instanceof ConsoleSecretPrompt);
   assertEquals(false, consoleSecret.getQuestion().show);
+});
+
+Deno.test("Altdx Console Secret Prompt - Should parse options", () => {
+  const consoleSecret = new ConsoleSecretPrompt("");
+
+  const question: unknown = {
+    name: "answer",
+    type: Secret,
+    message: "",
+    validate: undefined,
+    hidden: false,
+    minLength: undefined,
+    maxLength: undefined,
+  };
+
+  assertEquals(question, consoleSecret.getParseQuestion());
 });
 
 Deno.test("Altdx Console Secret Prompt - Should prompt question", async () => {

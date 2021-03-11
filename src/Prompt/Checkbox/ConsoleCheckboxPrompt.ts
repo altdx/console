@@ -2,6 +2,7 @@ import { Checkbox } from "../../deps.ts";
 import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
 import {
   CheckboxOptionType,
+  CheckboxValidatorCallback,
   ConsoleCheckboxPromptQuestionType,
   IConsoleCheckboxPrompt,
 } from "./mod.ts";
@@ -15,6 +16,7 @@ export class ConsoleCheckboxPrompt extends AbstractConsolePrompt
     this.question = {
       ...this.getQuestion(),
       message: message,
+      validator: null,
       type: Checkbox,
       itemsPerPage: 10,
       options: [],
@@ -77,6 +79,15 @@ export class ConsoleCheckboxPrompt extends AbstractConsolePrompt
     return this;
   }
 
+  /**
+   * @inheritDoc IConsoleCheckboxPrompt.validator
+   */
+  validator(callback: CheckboxValidatorCallback): IConsoleCheckboxPrompt {
+    this.question.validator = callback;
+
+    return this;
+  }
+
   public getQuestion(): ConsoleCheckboxPromptQuestionType {
     return this.question;
   }
@@ -86,6 +97,7 @@ export class ConsoleCheckboxPrompt extends AbstractConsolePrompt
       name: this.question.name,
       type: this.question.type,
       message: this.question.message ?? "",
+      validate: this.question.validator ?? undefined,
       maxRows: this.question.itemsPerPage,
       options: this.question.options,
       search: this.question.search !== null,

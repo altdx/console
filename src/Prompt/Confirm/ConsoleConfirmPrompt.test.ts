@@ -11,6 +11,7 @@ Deno.test("Altdx Console Confirm Prompt - Should have right options", () => {
     name: "answer",
     type: Confirm,
     message: "Confirm? ",
+    validator: null
   };
 
   assertEquals(question, consoleConfirm.getQuestion());
@@ -33,6 +34,19 @@ Deno.test("Altdx Console Confirm Prompt - Should have Confirm type", () => {
 Deno.test("Altdx Console Confirm Prompt - Should have message", () => {
   const consoleConfirm = new ConsoleConfirmPrompt("Confirm? ");
   assertEquals("Confirm? ", consoleConfirm.getMessage());
+});
+
+Deno.test("Altdx Console Confirm Prompt - Should parse options", () => {
+  const consoleConfirm = new ConsoleConfirmPrompt("");
+
+  const question: unknown = {
+    name: "answer",
+    type: Confirm,
+    message: "",
+    validate: undefined,
+  };
+
+  assertEquals(question, consoleConfirm.getParseQuestion());
 });
 
 Deno.test("Altdx Console Confirm Prompt - Should prompt question", async () => {

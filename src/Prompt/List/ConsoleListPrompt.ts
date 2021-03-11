@@ -1,6 +1,6 @@
 import { List } from "../../deps.ts";
 import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
-import { ConsoleListPromptQuestionType, IConsoleListPrompt } from "./mod.ts";
+import {ConsoleListPromptQuestionType, IConsoleListPrompt, ListValidatorCallback} from "./mod.ts";
 
 /**
  * List console prompt.
@@ -23,6 +23,7 @@ export class ConsoleListPrompt extends AbstractConsolePrompt
       ...this.getQuestion(),
       message: message,
       type: List,
+      validator: null,
       min: null,
       max: null,
       minTags: null,
@@ -152,6 +153,15 @@ export class ConsoleListPrompt extends AbstractConsolePrompt
   }
 
   /**
+   * @inheritDoc IConsoleListPrompt.validator
+   */
+  validator(callback: ListValidatorCallback): IConsoleListPrompt {
+    this.question.validator = callback;
+
+    return this;
+  }
+
+  /**
    * @inheritDoc IConsolePrompt.getQuestion
    */
   public getQuestion(): ConsoleListPromptQuestionType {
@@ -166,6 +176,7 @@ export class ConsoleListPrompt extends AbstractConsolePrompt
       name: this.question.name,
       type: this.question.type,
       message: this.question.message ?? "",
+      validate: this.question.validator ?? undefined,
       separator: this.question.separator ?? undefined,
       minLength: this.question.min ?? undefined,
       maxLength: this.question.max ?? undefined,

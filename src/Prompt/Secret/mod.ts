@@ -2,6 +2,8 @@ import { ConsolePromptQuestionType, IConsolePrompt } from "../mod.ts";
 
 export * from "./ConsoleSecretPrompt.ts";
 
+export type SecretValidatorCallback = ((value: string) => boolean | string) | null;
+
 /**
  * Input console prompt question type.
  */
@@ -20,6 +22,11 @@ export type ConsoleSecretPromptQuestionType = ConsolePromptQuestionType & {
    * Show input during typing.
    */
   show: boolean;
+
+  /**
+   * Validator callback.
+   */
+  validator?: SecretValidatorCallback;
 };
 
 /**
@@ -49,4 +56,9 @@ export interface IConsoleSecretPrompt extends IConsolePrompt {
    * Hide input during typing.
    */
   hide: () => IConsoleSecretPrompt;
+
+  /**
+   * Should return true if the value is valid, and an error message String otherwise. If false is returned, a default error message is shown.
+   */
+  validator(callback: SecretValidatorCallback): IConsoleSecretPrompt;
 }

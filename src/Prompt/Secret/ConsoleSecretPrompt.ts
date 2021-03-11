@@ -2,7 +2,7 @@ import { Secret } from "../../deps.ts";
 import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
 import {
   ConsoleSecretPromptQuestionType,
-  IConsoleSecretPrompt,
+  IConsoleSecretPrompt, SecretValidatorCallback,
 } from "./mod.ts";
 
 /**
@@ -26,6 +26,7 @@ export class ConsoleSecretPrompt extends AbstractConsolePrompt
       ...this.getQuestion(),
       type: Secret,
       message: message,
+      validator: null,
       min: null,
       max: null,
       show: true,
@@ -69,6 +70,16 @@ export class ConsoleSecretPrompt extends AbstractConsolePrompt
   }
 
   /**
+   * @inheritDoc IConsoleSecretPrompt.validator
+   */
+  validator(callback: SecretValidatorCallback): IConsoleSecretPrompt {
+    this.question.validator = callback;
+
+    return this;
+  }
+
+
+  /**
    * @inheritDoc IConsolePrompt.getQuestion
    */
   public getQuestion(): ConsoleSecretPromptQuestionType {
@@ -83,6 +94,7 @@ export class ConsoleSecretPrompt extends AbstractConsolePrompt
       name: this.question.name,
       type: this.question.type,
       message: this.question.message ?? "",
+      validate: this.question.validator ?? undefined,
       minLength: this.question.min ?? undefined,
       maxLength: this.question.max ?? undefined,
       hidden: !this.question.show,

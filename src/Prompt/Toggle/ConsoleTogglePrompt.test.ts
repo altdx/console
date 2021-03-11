@@ -8,6 +8,7 @@ Deno.test("Altdx Console Toggle Prompt - Should have right options", () => {
     name: "answer",
     type: Toggle,
     message: "Confirm? ",
+    validator: null,
   };
 
   assertEquals(question, consoleToggle.getQuestion());
@@ -30,6 +31,19 @@ Deno.test("Altdx Console Toggle Prompt - Should have Toggle type", () => {
 Deno.test("Altdx Console Toggle Prompt - Should have message", () => {
   const consoleToggle = new ConsoleTogglePrompt("Confirm? ");
   assertEquals("Confirm? ", consoleToggle.getMessage());
+});
+
+Deno.test("Altdx Console Toggle Prompt - Should parse options", () => {
+  const consoleToggle = new ConsoleTogglePrompt("");
+
+  const question: unknown = {
+    name: "answer",
+    type: Toggle,
+    message: "",
+    validate: undefined,
+  };
+
+  assertEquals(question, consoleToggle.getParseQuestion());
 });
 
 Deno.test("Altdx Console Toggle Prompt - Should prompt question", async () => {

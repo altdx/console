@@ -2,6 +2,8 @@ import { ConsolePromptQuestionType, IConsolePrompt } from "../mod.ts";
 
 export * from "./ConsoleListPrompt.ts";
 
+export type ListValidatorCallback = ((value: string[]) => boolean | string) | null;
+
 /**
  * List console prompt question type.
  */
@@ -45,6 +47,11 @@ export type ConsoleListPromptQuestionType = ConsolePromptQuestionType & {
    * String separator. Defaults to ','.
    */
   separator: string | null;
+
+  /**
+   * Validator callback.
+   */
+  validator?: ListValidatorCallback;
 };
 
 /**
@@ -125,4 +132,9 @@ export interface IConsoleListPrompt extends IConsolePrompt {
    * Get string separator.
    */
   getSeparator: () => string | null;
+
+  /**
+   * Should return true if the value is valid, and an error message String otherwise. If false is returned, a default error message is shown.
+   */
+  validator(callback: ListValidatorCallback): IConsoleListPrompt;
 }

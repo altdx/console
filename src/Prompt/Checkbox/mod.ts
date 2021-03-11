@@ -2,6 +2,8 @@ import { ConsolePromptQuestionType, IConsolePrompt } from "../mod.ts";
 
 export * from "./ConsoleCheckboxPrompt.ts";
 
+export type CheckboxValidatorCallback = ((value: string) => boolean | string) | null;
+
 export type CheckboxOptionType = {
   name?: string;
   value: string;
@@ -22,6 +24,11 @@ export type ConsoleCheckboxPromptQuestionType = ConsolePromptQuestionType & {
    * Maximum number of selectable options. Defaults to null.
    */
   max: number | null;
+
+  /**
+   * Validator callback.
+   */
+  validator?: CheckboxValidatorCallback;
 };
 
 export interface IConsoleCheckboxPrompt extends IConsolePrompt {
@@ -46,4 +53,9 @@ export interface IConsoleCheckboxPrompt extends IConsolePrompt {
    * Set minimum number of selectable options.
    */
   max: (count: number | null) => IConsoleCheckboxPrompt;
+
+  /**
+   * Should return true if the value is valid, and an error message String otherwise. If false is returned, a default error message is shown.
+   */
+  validator(callback: CheckboxValidatorCallback): IConsoleCheckboxPrompt;
 }

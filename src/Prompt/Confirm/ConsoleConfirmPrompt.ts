@@ -1,6 +1,7 @@
 import { Confirm } from "../../deps.ts";
 import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
 import {
+  ConfirmValidatorCallback,
   ConsoleConfirmPromptQuestionType,
   IConsoleConfirmPrompt,
 } from "./mod.ts";
@@ -26,7 +27,18 @@ export class ConsoleConfirmPrompt extends AbstractConsolePrompt
       ...this.getQuestion(),
       type: Confirm,
       message: message,
+      validator: null,
     };
+  }
+
+
+  /**
+   * @inheritDoc IConsoleConfirmPrompt.validator
+   */
+  validator(callback: ConfirmValidatorCallback): IConsoleConfirmPrompt {
+    this.question.validator = callback;
+
+    return this;
   }
 
   /**
@@ -44,6 +56,7 @@ export class ConsoleConfirmPrompt extends AbstractConsolePrompt
       name: this.question.name,
       type: this.question.type,
       message: this.question.message ?? "",
+      validate: this.question.validator ?? undefined,
     };
   }
 }

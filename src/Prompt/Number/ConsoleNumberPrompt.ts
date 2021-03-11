@@ -3,6 +3,7 @@ import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
 import {
   ConsoleNumberPromptQuestionType,
   IConsoleNumberPrompt,
+  NumberValidatorCallback,
 } from "./mod.ts";
 
 /**
@@ -26,6 +27,7 @@ export class ConsoleNumberPrompt extends AbstractConsolePrompt
       ...this.getQuestion(),
       type: Number,
       message: message,
+      validator: null,
       min: null,
       max: null,
       isFloat: false,
@@ -139,6 +141,15 @@ export class ConsoleNumberPrompt extends AbstractConsolePrompt
   }
 
   /**
+   * @inheritDoc IConsoleNumberPrompt.validator
+   */
+  validator(callback: NumberValidatorCallback): IConsoleNumberPrompt {
+    this.question.validator = callback;
+
+    return this;
+  }
+
+  /**
    * @inheritDoc IConsolePrompt.getQuestion
    */
   public getQuestion(): ConsoleNumberPromptQuestionType {
@@ -153,6 +164,7 @@ export class ConsoleNumberPrompt extends AbstractConsolePrompt
       name: this.question.name,
       type: this.question.type,
       message: this.question.message ?? "",
+      validate: this.question.validator ?? undefined,
       min: this.question.min ?? undefined,
       max: this.question.max ?? undefined,
       float: this.question.isFloat,
