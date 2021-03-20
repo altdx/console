@@ -2,7 +2,9 @@ import { ConsolePromptQuestionType, IConsolePrompt } from "../mod.ts";
 
 export * from "./ConsoleNumberPrompt.ts";
 
-export type NumberValidatorCallback = ((value: number) => boolean | string) | null;
+export type NumberValidatorCallback =
+  | ((value: number) => boolean | string)
+  | null;
 
 /**
  * Input console prompt question type.

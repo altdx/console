@@ -1,4 +1,4 @@
-import {assertEquals, Mock, Number} from "../../deps.ts";
+import { assertEquals, Mock, Number } from "../../deps.ts";
 import { ConsoleNumberPrompt, ConsoleNumberPromptQuestionType } from "./mod.ts";
 
 Deno.test("Altdx Console Number Prompt - Should have right options", () => {

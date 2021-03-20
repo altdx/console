@@ -11,7 +11,7 @@ export enum EResponseType {
   BAD_OPTION = 406,
   BAD_OPTION_MESSAGE = "Not valid option.",
   SUCCESS = 0,
-  SUCCESS_MESSAGE = "OK"
+  SUCCESS_MESSAGE = "OK",
 }
 
 export type StatusType =

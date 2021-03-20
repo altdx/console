@@ -1,4 +1,4 @@
-import {assertEquals, Confirm, Mock} from "../../deps.ts";
+import { assertEquals, Confirm, Mock } from "../../deps.ts";
 import {
   ConsoleConfirmPrompt,
   ConsoleConfirmPromptQuestionType,
@@ -11,7 +11,7 @@ Deno.test("Altdx Console Confirm Prompt - Should have right options", () => {
     name: "answer",
     type: Confirm,
     message: "Confirm? ",
-    validator: null
+    validator: null,
   };
 
   assertEquals(question, consoleConfirm.getQuestion());

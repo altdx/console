@@ -1,4 +1,4 @@
-import {assertEquals, Mock, Select} from "../../deps.ts";
+import { assertEquals, Mock, Select } from "../../deps.ts";
 import {
   ConsoleSelectPrompt,
   ConsoleSelectPromptQuestionType,

@@ -2,7 +2,9 @@ import { ConsolePromptQuestionType, IConsolePrompt } from "../mod.ts";
 
 export * from "./ConsoleSecretPrompt.ts";
 
-export type SecretValidatorCallback = ((value: string) => boolean | string) | null;
+export type SecretValidatorCallback =
+  | ((value: string) => boolean | string)
+  | null;
 
 /**
  * Input console prompt question type.

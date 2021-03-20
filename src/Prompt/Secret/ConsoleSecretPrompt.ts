@@ -2,7 +2,8 @@ import { Secret } from "../../deps.ts";
 import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
 import {
   ConsoleSecretPromptQuestionType,
-  IConsoleSecretPrompt, SecretValidatorCallback,
+  IConsoleSecretPrompt,
+  SecretValidatorCallback,
 } from "./mod.ts";
 
 /**
@@ -77,7 +78,6 @@ export class ConsoleSecretPrompt extends AbstractConsolePrompt
 
     return this;
   }
-
 
   /**
    * @inheritDoc IConsolePrompt.getQuestion

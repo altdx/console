@@ -2,7 +2,9 @@ import { ConsolePromptQuestionType, IConsolePrompt } from "../mod.ts";
 
 export * from "./ConsoleCheckboxPrompt.ts";
 
-export type CheckboxValidatorCallback = ((value: string) => boolean | string) | null;
+export type CheckboxValidatorCallback =
+  | ((value: string) => boolean | string)
+  | null;
 
 export type CheckboxOptionType = {
   name?: string;

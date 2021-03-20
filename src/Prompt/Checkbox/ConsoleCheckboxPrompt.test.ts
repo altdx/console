@@ -1,4 +1,4 @@
-import {assertEquals, Checkbox, Mock} from "../../deps.ts";
+import { assertEquals, Checkbox, Mock } from "../../deps.ts";
 import {
   CheckboxOptionType,
   ConsoleCheckboxPrompt,

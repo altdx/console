@@ -1,4 +1,4 @@
-import {assertEquals, Mock, Secret} from "../../deps.ts";
+import { assertEquals, Mock, Secret } from "../../deps.ts";
 import { ConsoleSecretPrompt, ConsoleSecretPromptQuestionType } from "./mod.ts";
 
 Deno.test("Altdx Console Secret Prompt - Should have right options", () => {

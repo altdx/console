@@ -1,6 +1,11 @@
-import {ConsoleRequest, IConsoleRequest} from "../Request/mod.ts";
+import { ConsoleRequest, IConsoleRequest } from "../Request/mod.ts";
 import { ConsoleResponse, IConsoleResponse } from "../Response/mod.ts";
-import {ConsoleCommand, ConsoleCommandType, LongOptionType, ShortOptionType} from "./mod.ts";
+import {
+  ConsoleCommand,
+  ConsoleCommandType,
+  LongOptionType,
+  ShortOptionType,
+} from "./mod.ts";
 import { assertEquals, Mock } from "../deps.ts";
 
 const run = (request: IConsoleRequest, response: IConsoleResponse) => response;
@@ -36,13 +41,18 @@ Deno.test("Altdx Console Command - Should get command long options", () => {
 
 Deno.test("Altdx Console Command - Should validate arguments", () => {
   request.parse(["command"]);
-  let command = new ConsoleCommand({name: "use", description: "", args: 2, run});
+  let command = new ConsoleCommand({
+    name: "use",
+    description: "",
+    args: 2,
+    run,
+  });
   assertEquals(false, command.isValid(request));
   assertEquals("Missing argument.", command.getErrorMessage());
   request.parse(["command", "arg1"]);
   assertEquals(false, command.isValid(request));
   assertEquals("Require 2 argument(s).", command.getErrorMessage());
-  command = new ConsoleCommand({name: "use", description: "", args: 2, run});
+  command = new ConsoleCommand({ name: "use", description: "", args: 2, run });
   request.parse(["command", "arg1", "arg2"]);
   assertEquals(true, command.isValid(request));
   request.parse(["command", "arg1", "arg2", "arg3"]);
@@ -51,13 +61,18 @@ Deno.test("Altdx Console Command - Should validate arguments", () => {
 
 Deno.test("Altdx Console Command - Should validate short options", () => {
   const shortOptions: ShortOptionType[] = [
-    {s:{description: "", required: true}},
-    {s:{description: "", required: true, constraint: /hello/}},
+    { s: { description: "", required: true } },
+    { s: { description: "", required: true, constraint: /hello/ } },
   ];
 
   shortOptions.map((shortOption) => {
     request.parse(["command"]);
-    let command = new ConsoleCommand({name: "use", description: "", shortOptions: shortOption, run});
+    let command = new ConsoleCommand({
+      name: "use",
+      description: "",
+      shortOptions: shortOption,
+      run,
+    });
     assertEquals(false, command.isValid(request));
     assertEquals("Option -s is required.", command.getErrorMessage());
     request.parse(["command", "--s"]);
@@ -67,9 +82,16 @@ Deno.test("Altdx Console Command - Should validate short options", () => {
     assertEquals(true, command.isValid(request));
   });
 
-  const shortOptions2: ShortOptionType = {s:{description: "", constraint: /hello/}};
+  const shortOptions2: ShortOptionType = {
+    s: { description: "", constraint: /hello/ },
+  };
   request.parse(["command"]);
-  let command = new ConsoleCommand({name: "use", description: "", shortOptions: shortOptions2, run});
+  let command = new ConsoleCommand({
+    name: "use",
+    description: "",
+    shortOptions: shortOptions2,
+    run,
+  });
   assertEquals(true, command.isValid(request));
   request.parse(["command", "-s", "hel"]);
   assertEquals(false, command.isValid(request));
@@ -83,13 +105,18 @@ Deno.test("Altdx Console Command - Should validate short options", () => {
 
 Deno.test("Altdx Console Command - Should validate long options", () => {
   const longOptions: LongOptionType[] = [
-    {long:{description: "", required: true}},
-    {long:{description: "", required: true, constraint: /hello/}},
+    { long: { description: "", required: true } },
+    { long: { description: "", required: true, constraint: /hello/ } },
   ];
 
   longOptions.map((longOption) => {
     request.parse(["command"]);
-    let command = new ConsoleCommand({name: "use", description: "", longOptions: longOption, run});
+    let command = new ConsoleCommand({
+      name: "use",
+      description: "",
+      longOptions: longOption,
+      run,
+    });
     assertEquals(false, command.isValid(request));
     assertEquals("Option --long is required.", command.getErrorMessage());
     request.parse(["command", "---long"]);
@@ -99,16 +126,29 @@ Deno.test("Altdx Console Command - Should validate long options", () => {
     assertEquals(true, command.isValid(request));
   });
 
-  const shortOptions2: LongOptionType = {long:{description: "", constraint: /hello/}};
+  const shortOptions2: LongOptionType = {
+    long: { description: "", constraint: /hello/ },
+  };
   request.parse(["command"]);
-  let command = new ConsoleCommand({name: "use", description: "", longOptions: shortOptions2, run});
+  let command = new ConsoleCommand({
+    name: "use",
+    description: "",
+    longOptions: shortOptions2,
+    run,
+  });
   assertEquals(true, command.isValid(request));
   request.parse(["command", "--long", "hel"]);
   assertEquals(false, command.isValid(request));
-  assertEquals("Value of --long option does not match.", command.getErrorMessage());
+  assertEquals(
+    "Value of --long option does not match.",
+    command.getErrorMessage(),
+  );
   request.parse(["command", "--long", "hel", "--long", "hello world"]);
   assertEquals(false, command.isValid(request));
-  assertEquals("Value of --long option does not match.", command.getErrorMessage());
+  assertEquals(
+    "Value of --long option does not match.",
+    command.getErrorMessage(),
+  );
   request.parse(["command", "-long", "john, hello", "-long", "hello world"]);
   assertEquals(true, command.isValid(request));
 });

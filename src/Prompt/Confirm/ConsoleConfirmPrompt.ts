@@ -31,7 +31,6 @@ export class ConsoleConfirmPrompt extends AbstractConsolePrompt
     };
   }
 
-
   /**
    * @inheritDoc IConsoleConfirmPrompt.validator
    */

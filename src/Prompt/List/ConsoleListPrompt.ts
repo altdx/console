@@ -1,6 +1,10 @@
 import { List } from "../../deps.ts";
 import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
-import {ConsoleListPromptQuestionType, IConsoleListPrompt, ListValidatorCallback} from "./mod.ts";
+import {
+  ConsoleListPromptQuestionType,
+  IConsoleListPrompt,
+  ListValidatorCallback,
+} from "./mod.ts";
 
 /**
  * List console prompt.

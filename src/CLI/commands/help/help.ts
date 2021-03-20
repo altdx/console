@@ -1,5 +1,8 @@
 import { IConsoleResponse } from "../../../Response/mod.ts";
-import { consoleCommandCollection as collection, ConsoleCommand } from "../../../Command/mod.ts";
+import {
+  ConsoleCommand,
+  consoleCommandCollection as collection,
+} from "../../../Command/mod.ts";
 import { printHelp } from "./printHelp.ts";
 
 export const help = (): IConsoleResponse => {

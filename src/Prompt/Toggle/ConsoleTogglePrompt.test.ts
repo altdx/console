@@ -1,4 +1,4 @@
-import {assertEquals, Mock, Toggle} from "../../deps.ts";
+import { assertEquals, Mock, Toggle } from "../../deps.ts";
 import { ConsoleTogglePrompt, ConsoleTogglePromptQuestionType } from "./mod.ts";
 
 Deno.test("Altdx Console Toggle Prompt - Should have right options", () => {

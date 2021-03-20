@@ -1,5 +1,5 @@
-import {assertEquals, Input, Mock} from "../deps.ts";
-import {AbstractConsolePrompt} from "./mod.ts";
+import { assertEquals, Input, Mock } from "../deps.ts";
+import { AbstractConsolePrompt } from "./mod.ts";
 
 class FakePrompt extends AbstractConsolePrompt {
   constructor() {
@@ -21,7 +21,10 @@ Deno.test("Altdx Console Prompt - Should set and get prompt name", () => {
 
 Deno.test("Altdx Console Prompt - Should set and get prompt message", () => {
   const prompt = new FakePrompt();
-  assertEquals(true, prompt.setMessage("Enter your name") instanceof FakePrompt);
+  assertEquals(
+    true,
+    prompt.setMessage("Enter your name") instanceof FakePrompt,
+  );
   assertEquals("Enter your name", prompt.getMessage());
 });
 

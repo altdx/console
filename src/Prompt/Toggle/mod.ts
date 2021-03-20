@@ -2,7 +2,9 @@ import { ConsolePromptQuestionType, IConsolePrompt } from "../mod.ts";
 
 export * from "./ConsoleTogglePrompt.ts";
 
-export type ToggleValidatorCallback = ((value: boolean) => boolean | string) | null;
+export type ToggleValidatorCallback =
+  | ((value: boolean) => boolean | string)
+  | null;
 
 /**
  * Toggle console prompt question type.

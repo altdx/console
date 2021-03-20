@@ -1,4 +1,4 @@
-import {assertEquals, List, Mock} from "../../deps.ts";
+import { assertEquals, List, Mock } from "../../deps.ts";
 import { ConsoleListPrompt, ConsoleListPromptQuestionType } from "./mod.ts";
 
 Deno.test("Altdx Console List Prompt - Should have right options", () => {

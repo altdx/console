@@ -1,5 +1,9 @@
 import { AbstractConsolePrompt, MessageValueType } from "../mod.ts";
-import {ConsoleInputPromptQuestionType, IConsoleInputPrompt, InputValidatorCallback} from "./mod.ts";
+import {
+  ConsoleInputPromptQuestionType,
+  IConsoleInputPrompt,
+  InputValidatorCallback,
+} from "./mod.ts";
 
 /**
  * Input console prompt.

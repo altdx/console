@@ -2,7 +2,9 @@ import { ConsolePromptQuestionType, IConsolePrompt } from "../mod.ts";
 
 export * from "./ConsoleSelectPrompt.ts";
 
-export type SelectValidatorCallback = ((value: string) => boolean | string) | null;
+export type SelectValidatorCallback =
+  | ((value: string) => boolean | string)
+  | null;
 
 export type SelectOptionType = {
   name?: string;

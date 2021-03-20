@@ -2,7 +2,9 @@ import { ConsolePromptQuestionType, IConsolePrompt } from "../mod.ts";
 
 export * from "./ConsoleConfirmPrompt.ts";
 
-export type ConfirmValidatorCallback = ((value: boolean) => boolean | string) | null;
+export type ConfirmValidatorCallback =
+  | ((value: boolean) => boolean | string)
+  | null;
 
 /**
  * Confirm console prompt question type.

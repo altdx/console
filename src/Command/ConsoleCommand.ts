@@ -64,14 +64,22 @@ export class ConsoleCommand implements IConsoleCommand {
     }
 
     if (this.def.shortOptions) {
-      const isValid = this.checkOptions(this.def.shortOptions, request, "ShortOption");
+      const isValid = this.checkOptions(
+        this.def.shortOptions,
+        request,
+        "ShortOption",
+      );
       if (!isValid) {
         return false;
       }
     }
 
     if (this.def.longOptions) {
-      const isValid = this.checkOptions(this.def.longOptions, request, "LongOption");
+      const isValid = this.checkOptions(
+        this.def.longOptions,
+        request,
+        "LongOption",
+      );
       if (!isValid) {
         return false;
       }
@@ -80,7 +88,11 @@ export class ConsoleCommand implements IConsoleCommand {
     return true;
   }
 
-  private checkOptions(options: ShortOptionType | LongOptionType, request: IConsoleRequest, type: "ShortOption" | "LongOption"): boolean {
+  private checkOptions(
+    options: ShortOptionType | LongOptionType,
+    request: IConsoleRequest,
+    type: "ShortOption" | "LongOption",
+  ): boolean {
     const keys: string[] = Object.keys(options);
     for (let i = 0; i < keys.length; i++) {
       const key: string = keys[i];
@@ -96,7 +108,7 @@ export class ConsoleCommand implements IConsoleCommand {
 
       // @ts-ignore
       if (required && !request[`has${type}`](key)) {
-        this.errorMessage = `Option ${prefix + key} is required.`
+        this.errorMessage = `Option ${prefix + key} is required.`;
 
         return false;
       }
@@ -108,8 +120,12 @@ export class ConsoleCommand implements IConsoleCommand {
       if (constraint && optionValues) {
         for (let k = 0; k < optionValues.length; k++) {
           const optionValue = optionValues[k];
-          if (optionValue !== true && optionValue !== false && !constraint.test(optionValue)) {
-            this.errorMessage = `Value of ${prefix + key} option does not match.`;
+          if (
+            optionValue !== true && optionValue !== false &&
+            !constraint.test(optionValue)
+          ) {
+            this.errorMessage = `Value of ${prefix +
+              key} option does not match.`;
             return false;
           }
         }

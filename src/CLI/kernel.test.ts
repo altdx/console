@@ -1,10 +1,11 @@
-import { ConsoleCommand,
+import {
+  ConsoleCommand,
   ConsoleCommandCollection,
-  ConsoleCommandType
+  ConsoleCommandType,
 } from "../Command/mod.ts";
 import { assertEquals, Mock } from "../deps.ts";
 
-import { run } from './kernel.ts';
+import { run } from "./kernel.ts";
 
 const def: ConsoleCommandType = {
   name: "myCommand",
@@ -30,20 +31,20 @@ collection.add(new ConsoleCommand(def));
 Deno.test("Altdx CLI Kernel - Should have command", () => {
   const mock = new Mock();
   mock.spyOn(def, "run");
-  run(['myCommand', '--long'], collection);
+  run(["myCommand", "--long"], collection);
   assertEquals(true, mock.haveBeenCalledTimes(1));
 });
 
 Deno.test("Altdx CLI Kernel - Should not have command", () => {
   const mock = new Mock();
   mock.spyOn(def, "run");
-  run(['myCommandBad', '--bad'], collection);
+  run(["myCommandBad", "--bad"], collection);
   assertEquals(false, mock.haveBeenCalled());
 });
 
 Deno.test("Altdx CLI Kernel - Should not have option", () => {
   const mock = new Mock();
   mock.spyOn(def, "run");
-  run(['myCommand', '--bad'], collection);
+  run(["myCommand", "--bad"], collection);
   assertEquals(false, mock.haveBeenCalled());
 });

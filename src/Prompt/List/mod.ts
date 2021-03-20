@@ -2,7 +2,9 @@ import { ConsolePromptQuestionType, IConsolePrompt } from "../mod.ts";
 
 export * from "./ConsoleListPrompt.ts";
 
-export type ListValidatorCallback = ((value: string[]) => boolean | string) | null;
+export type ListValidatorCallback =
+  | ((value: string[]) => boolean | string)
+  | null;
 
 /**
  * List console prompt question type.
