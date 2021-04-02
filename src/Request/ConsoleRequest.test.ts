@@ -1,5 +1,7 @@
 import { assertEquals } from "../deps.ts";
-import { consoleRequest as request } from "./mod.ts";
+import { ConsoleRequest } from "./mod.ts";
+
+const request = new ConsoleRequest();
 
 Deno.test("Altdx Console Request - should have default values", () => {
   request.parse(["-v"]);

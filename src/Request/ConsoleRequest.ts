@@ -7,12 +7,13 @@ import { ConsoleRequestOptionType, IConsoleRequest } from "./mod.ts";
  * @example
  *
  * ```ts
- *  import { consoleRequest as request } from '@altdx/console-request';
+ *  const request = new ConsoleRequest();
  *
- *  // Default command
- *  request.parse([]); // Get help
- *  request.parse(['-l']); // Get list of commands
- *  request.parse(['-v']); // Get CLI version
+ *  request.parse([]);
+ *  request.getCommand(); // help
+ *
+ *  request.parse(["-v"]);
+ *  request.getCommand(); // version
  * ```
  */
 export class ConsoleRequest implements IConsoleRequest {
@@ -235,5 +236,3 @@ export class ConsoleRequest implements IConsoleRequest {
     this.consoleArgs = [];
   }
 }
-
-export const consoleRequest = new ConsoleRequest();

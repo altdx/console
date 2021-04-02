@@ -6,7 +6,8 @@ export * from "./ConsoleRequest.ts";
 export type ConsoleRequestOptionType = Record<string, (string | boolean)[]>;
 
 /**
- * Console request interface.
+ * Altdx Console Request interface.
+ * This interface allows you to handle terminal input command.
  */
 export interface IConsoleRequest {
   /**
