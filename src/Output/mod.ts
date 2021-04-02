@@ -2,7 +2,8 @@ import { IConsoleStyle } from "../Style/mod.ts";
 export * from "./ConsoleOutput.ts";
 
 /**
- * Console output interface.
+ * Altdx Console Output interface.
+ * This interface allows you to print some messages in the terminal.
  */
 export interface IConsoleOutput {
   /**

@@ -1,5 +1,5 @@
 import { EOL } from "../deps.ts";
-import { consoleFigure } from "../Figure/mod.ts";
+import { ConsoleFigure } from "../Figure/mod.ts";
 import { ConsoleStyle, IConsoleStyle } from "../Style/mod.ts";
 import { IConsoleOutput } from "./mod.ts";
 
@@ -11,8 +11,8 @@ import { IConsoleOutput } from "./mod.ts";
  * @example
  *
  * ```ts
- *  import { consoleOutput as output } from '@altdx/console-output';
- *  import { consoleStyle as style } from '@altdx/console-style';
+ *  const output = new ConsoleOutput();
+ *  const style = new ConsoleStyle();
  *
  *  // Simple text
  *  output.write('Hello');
@@ -30,6 +30,7 @@ import { IConsoleOutput } from "./mod.ts";
  */
 export class ConsoleOutput implements IConsoleOutput {
   private style = new ConsoleStyle();
+  private consoleFigure = new ConsoleFigure();
 
   /**
    * @inheritDoc IConsoleOutput.write
@@ -68,7 +69,7 @@ export class ConsoleOutput implements IConsoleOutput {
   public success(text: string, figure = true): this {
     this.style.reset().color("green");
     this.writeln(
-      this.style.render((figure ? consoleFigure.tick() + " " : "") + text),
+      this.style.render((figure ? this.consoleFigure.tick() + " " : "") + text),
     );
 
     return this;
@@ -80,7 +81,9 @@ export class ConsoleOutput implements IConsoleOutput {
   public error(text: string, figure = true): this {
     this.style.reset().color("red");
     this.writeln(
-      this.style.render((figure ? consoleFigure.cross() + " " : "") + text),
+      this.style.render(
+        (figure ? this.consoleFigure.cross() + " " : "") + text,
+      ),
     );
 
     return this;
@@ -92,7 +95,7 @@ export class ConsoleOutput implements IConsoleOutput {
   public info(text: string, figure = true): this {
     this.style.reset().color("blue");
     this.writeln(
-      this.style.render((figure ? consoleFigure.info() + " " : "") + text),
+      this.style.render((figure ? this.consoleFigure.info() + " " : "") + text),
     );
 
     return this;
@@ -104,11 +107,11 @@ export class ConsoleOutput implements IConsoleOutput {
   public warning(text: string, figure = true): this {
     this.style.reset().color("yellow");
     this.writeln(
-      this.style.render((figure ? consoleFigure.warning() + " " : "") + text),
+      this.style.render(
+        (figure ? this.consoleFigure.warning() + " " : "") + text,
+      ),
     );
 
     return this;
   }
 }
-
-export const consoleOutput = new ConsoleOutput();

@@ -1,7 +1,9 @@
 import { assertEquals, EOL, Mock } from "../deps.ts";
 import figures from "https://cdn.skypack.dev/figures@3.2.0?dts";
-import { consoleOutput as output } from "./mod.ts";
+import { ConsoleOutput } from "./mod.ts";
 import { ConsoleStyle } from "../Style/mod.ts";
+
+const output = new ConsoleOutput();
 
 Deno.test("Altdx Console Output - Should write text", () => {
   const mock = new Mock();
