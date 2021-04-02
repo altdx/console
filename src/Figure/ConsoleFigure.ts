@@ -3,11 +3,18 @@ import { IConsoleFigure } from "./mod.ts";
 
 /**
  * Altdx Console Figure.
- * This class allows you to display figures in the terminal.
+ * Display figures in the terminal.
+ *
+ * @example
+ *  ```ts
+ *  const figure = new ConsoleFigure();
+ *  console.log(figure.cross());
+ *  console.log(figure.arrowRight());
+ *  ```
  *
  * @remarks
  *
- * This class is based on the {@link https://www.npmjs.com/package/figures | figures} package.
+ * It is based on {@link https://cdn.skypack.dev/figures}.
  */
 export class ConsoleFigure implements IConsoleFigure {
   /**
@@ -164,5 +171,3 @@ export class ConsoleFigure implements IConsoleFigure {
     return figures.warning;
   }
 }
-
-export const consoleFigure = new ConsoleFigure();
