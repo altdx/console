@@ -3,9 +3,10 @@ import { IConsoleFigure } from "./mod.ts";
 
 /**
  * Altdx Console Figure.
- * Display figures in the terminal.
+ * This class allows you to display figures in the terminal.
  *
  * @example
+ *
  *  ```ts
  *  const figure = new ConsoleFigure();
  *  console.log(figure.cross());

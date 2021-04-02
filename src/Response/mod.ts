@@ -22,7 +22,8 @@ export type StatusType =
   | EResponseType.MISSING_OPTION;
 
 /**
- * Altdx Console Response interface
+ * Altdx Console Response interface.
+ * This interface allows you to handle console response.
  */
 export interface IConsoleResponse {
   /**

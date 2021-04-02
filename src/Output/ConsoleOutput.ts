@@ -4,7 +4,6 @@ import { ConsoleStyle, IConsoleStyle } from "../Style/mod.ts";
 import { IConsoleOutput } from "./mod.ts";
 
 /**
- * Hello
  * Altdx Console Output.
  * This class allows you to text on terminal.
  *

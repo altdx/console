@@ -1,7 +1,16 @@
 import { EResponseType, IConsoleResponse, StatusType } from "./mod.ts";
 
 /**
- * Altdx Console Response
+ * Altdx Console Response.
+ * This class allows you to handle console response.
+ *
+ * @example
+ *
+ * ```ts
+ * const response = new ConsoleResponse();
+ *
+ * console.log(response.getStatus());
+ * ```
  */
 export class ConsoleResponse implements IConsoleResponse {
   private status: StatusType = EResponseType.SUCCESS;
