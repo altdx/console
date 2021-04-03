@@ -2,9 +2,10 @@ import { IConsoleResponse } from "../Response/mod.ts";
 import {
   ConsoleCommand,
   ConsoleCommandCollection,
-  consoleCommandCollection as collection,
 } from "./mod.ts";
 import { assertEquals, assertNotEquals } from "../deps.ts";
+
+const collection = new ConsoleCommandCollection();
 
 const expectedCommands = ["create", "remove", "clean", "toRemove"];
 

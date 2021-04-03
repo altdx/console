@@ -6,10 +6,26 @@ import {
   IConsoleCommand,
   LongOptionType,
   ShortOptionType,
-} from "./mod.ts";
+} from "./types.ts";
 
 /**
  * Altdx Console Command.
+ * This class allows you to handle terminal command.
+ *
+ * @example
+ *
+ * ```ts
+ * const def: ConsoleCommandType = {
+ *   name: "create",
+ *   description: "my description",
+ *   run: () => {console.log('my create command')},
+ * };
+ *
+ * const command = new ConsoleCommand(def);
+ *
+ * console.log(command.getName());
+ * console.log(command.getShortOptions());
+ * ```
  */
 export class ConsoleCommand implements IConsoleCommand {
   private errorMessage = "";

@@ -1,7 +1,27 @@
-import { IConsoleCommand, IConsoleCommandCollection } from "./mod.ts";
+import { IConsoleCommand, IConsoleCommandCollection } from "./types.ts";
 
 /**
  * Altdx Console Command Collection.
+ * This class allows you to handle terminal command collection.
+ *
+ * @example
+ *
+ * ```ts
+ * const collection = new ConsoleCommandCollection();
+ *
+ * collection.add(
+ *   new ConsoleCommand({
+ *     "create",
+ *     description: "my description",
+ *     shortOptions: {},
+ *     longOptions: {},
+ *     run: (request, response): IConsoleResponse => {
+ *       // ...
+ *       return response;
+ *     },
+ *   }),
+ * );
+ * ```
  */
 export class ConsoleCommandCollection implements IConsoleCommandCollection {
   private collection: Record<string, IConsoleCommand> = {};
@@ -61,5 +81,3 @@ export class ConsoleCommandCollection implements IConsoleCommandCollection {
     return this;
   }
 }
-
-export const consoleCommandCollection = new ConsoleCommandCollection();
