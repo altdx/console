@@ -1,18 +1,14 @@
-import colors from "https://cdn.skypack.dev/ansi-colors@4.1.1?dts";
-import { ColorType, IConsoleStyle, ModifierType } from "./mod.ts";
+import * as colors from "https://deno.land/std@0.92.0/fmt/colors.ts";
+import { ColorType, IConsoleStyle, ModifierType } from "./types.ts";
 
 /**
  * Altdx Console Style.
  * This class allows you to style terminal output.
  *
- * @remarks
- *
- * This class is based on the {@link https://www.npmjs.com/package/ansi-colors | ansi-colors} package.
- *
  * @example
  *
  * ```ts
- *  import { consoleStyle as style } from '@altdx/console-style';
+ *  const style = new ConsoleStyle();
  *
  *  style.bold().underline().color('blue');
  *  console.log(style.render('hello'));
@@ -20,11 +16,9 @@ import { ColorType, IConsoleStyle, ModifierType } from "./mod.ts";
  *  style.color('white', true).bgc('blue');
  *  console.log(style.render('hello'));
  * ```
- *
- * Todo: use Deno color instead of ansi-colors
  */
 export class ConsoleStyle implements IConsoleStyle {
-  private modifier: ModifierType | null = null;
+  private modifier: ModifierType[] = [];
   private fontColor: ColorType | null = null;
   private fontColorLight = false;
   private bgColor: ColorType | null = null;
@@ -34,38 +28,36 @@ export class ConsoleStyle implements IConsoleStyle {
    * @inheritDoc IConsoleStyle.render
    */
   public render(text: string): string {
-    let style = "";
-
-    if (this.modifier) {
-      style += this.modifier;
-    }
+    this.modifier.map((modifier) => {
+      text = colors[modifier](text);
+    });
 
     if (this.fontColor) {
-      style += "." + this.fontColor + (this.fontColorLight ? "Bright" : "");
+      const color = this.fontColor;
+      const fontColor = this.fontColorLight
+        ? "bright" + color.charAt(0).toUpperCase() + color.slice(1)
+        : color;
+      // @ts-ignore
+      text = colors[fontColor](text);
     }
 
     if (this.bgColor) {
-      const bgc = this.bgColor;
-      style += ".bg" + (bgc.charAt(0).toUpperCase() + bgc.slice(1)) +
-        (this.bgColorLight ? "Bright" : "");
+      const color = this.bgColor.charAt(0).toUpperCase() +
+        this.bgColor.slice(1);
+      const fontColor = this.bgColorLight ? "bgBright" + color : "bg" + color;
+
+      // @ts-ignore
+      text = colors[fontColor](text);
     }
 
-    style = style.replace(/^[. ]+/, "");
-
-    if (style === "") {
-      return text;
-    }
-
-    const styleFunc = new Function("colors", `return colors.${style}`)(colors);
-
-    return styleFunc(text);
+    return text;
   }
 
   /**
    * @inheritDoc IConsoleStyle.reset
    */
   public reset(): this {
-    this.modifier = null;
+    this.modifier = [];
     this.fontColor = null;
     this.fontColorLight = false;
     this.bgColor = null;
@@ -158,16 +150,8 @@ export class ConsoleStyle implements IConsoleStyle {
   }
 
   private setModifier(modifier: ModifierType): this {
-    if (!this.modifier) {
-      this.modifier = modifier;
-
-      return this;
-    }
-
-    this.modifier += "." + modifier;
+    this.modifier.push(modifier);
 
     return this;
   }
 }
-
-export const consoleStyle = new ConsoleStyle();

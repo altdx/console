@@ -1,47 +1,53 @@
-// deno-lint-ignore-file
-import colors from "https://cdn.skypack.dev/ansi-colors@4.1.1?dts";
+import {
+  bgBrightWhite,
+  bgWhite,
+  blue,
+  bold,
+  brightBlue,
+  dim,
+  hidden,
+  inverse,
+  italic,
+  strikethrough,
+  underline,
+} from "https://deno.land/std@0.92.0/fmt/colors.ts";
 import { assertEquals } from "../deps.ts";
-import { consoleStyle as style } from "./mod.ts";
+import { ConsoleStyle } from "./mod.ts";
+
+const style = new ConsoleStyle();
 
 Deno.test("Altdx Console Style - should render modifiers", () => {
-  // @ts-ignore
-  assertEquals(colors.bold("hello"), style.bold().render("hello"));
+  assertEquals(bold("hello"), style.bold().render("hello"));
 
-  style.reset().bold().dim().italic().underline().inverse().hidden()
-    .strikethrough();
+  style.reset().strikethrough().hidden().inverse().underline().italic().dim().bold();
   assertEquals(
-    // @ts-ignore
-    colors.bold.dim.italic.underline.inverse.hidden.strikethrough("hello"),
+    bold(dim(italic(underline(inverse(hidden(strikethrough("hello"))))))),
     style.render("hello"),
   );
 });
 
 Deno.test("Altdx Console Style - should render normal color", () => {
   style.reset();
-  // @ts-ignore
-  assertEquals(colors.blue("hello"), style.color("blue").render("hello"));
+  assertEquals(blue("hello"), style.color("blue").render("hello"));
 });
 
 Deno.test("Altdx Console Style - should render light color", () => {
   style.reset();
   assertEquals(
-    // @ts-ignore
-    colors.blueBright("hello"),
+    brightBlue("hello"),
     style.color("blue", true).render("hello"),
   );
 });
 
 Deno.test("Altdx Console Style - should render normal background color", () => {
   style.reset();
-  // @ts-ignore
-  assertEquals(colors.bgWhite("hello"), style.bgc("white").render("hello"));
+  assertEquals(bgWhite("hello"), style.bgc("white").render("hello"));
 });
 
 Deno.test("Altdx Console Style - should render light background color", () => {
   style.reset();
   assertEquals(
-    // @ts-ignore
-    colors.bgWhiteBright("hello"),
+    bgBrightWhite("hello"),
     style.bgc("white", true).render("hello"),
   );
 });
