@@ -1,7 +1,7 @@
 import { EOL } from "../deps.ts";
 import { ConsoleFigure } from "../Figure/mod.ts";
 import { ConsoleStyle, IConsoleStyle } from "../Style/mod.ts";
-import { IConsoleOutput } from "./mod.ts";
+import { IConsoleOutput } from "./types.ts";
 
 /**
  * Altdx Console Output.
