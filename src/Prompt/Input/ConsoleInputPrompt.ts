@@ -3,7 +3,7 @@ import {
   ConsoleInputPromptQuestionType,
   IConsoleInputPrompt,
   InputValidatorCallback,
-} from "./mod.ts";
+} from "./types.ts";
 
 /**
  * Input console prompt.

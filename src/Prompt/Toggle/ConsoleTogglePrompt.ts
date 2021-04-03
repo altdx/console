@@ -4,7 +4,7 @@ import {
   ConsoleTogglePromptQuestionType,
   IConsoleTogglePrompt,
   ToggleValidatorCallback,
-} from "./mod.ts";
+} from "./types.ts";
 
 /**
  * Toggle console prompt.

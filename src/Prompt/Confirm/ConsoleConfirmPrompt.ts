@@ -4,7 +4,7 @@ import {
   ConfirmValidatorCallback,
   ConsoleConfirmPromptQuestionType,
   IConsoleConfirmPrompt,
-} from "./mod.ts";
+} from "./types.ts";
 
 /**
  * Confirm console prompt.

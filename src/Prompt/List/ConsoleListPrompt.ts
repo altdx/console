@@ -4,7 +4,7 @@ import {
   ConsoleListPromptQuestionType,
   IConsoleListPrompt,
   ListValidatorCallback,
-} from "./mod.ts";
+} from "./types.ts";
 
 /**
  * List console prompt.

@@ -4,7 +4,7 @@ import {
   ConsoleNumberPromptQuestionType,
   IConsoleNumberPrompt,
   NumberValidatorCallback,
-} from "./mod.ts";
+} from "./types.ts";
 
 /**
  * Number console prompt.

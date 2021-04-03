@@ -1,9 +1,9 @@
 // deno-lint-ignore-file ban-ts-comment
-import { IConsolePrompt } from "./mod.ts";
+import { IConsolePrompt } from "./types.ts";
 import { prompt } from "../deps.ts";
 
 /**
- * Input Console Prompt.
+ * Altdx Console Prompt.
  */
 export class ConsolePrompt {
   /**

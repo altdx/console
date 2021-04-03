@@ -4,7 +4,7 @@ import {
   MessageValueType,
   NameValueType,
   TypeValueType,
-} from "./mod.ts";
+} from "./types.ts";
 
 import { Input, prompt } from "../deps.ts";
 

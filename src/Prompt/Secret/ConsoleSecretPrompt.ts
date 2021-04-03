@@ -4,7 +4,7 @@ import {
   ConsoleSecretPromptQuestionType,
   IConsoleSecretPrompt,
   SecretValidatorCallback,
-} from "./mod.ts";
+} from "./types.ts";
 
 /**
  * Secret console prompt.

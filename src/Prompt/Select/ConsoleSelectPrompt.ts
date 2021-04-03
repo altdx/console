@@ -5,7 +5,7 @@ import {
   IConsoleSelectPrompt,
   SelectOptionType,
   SelectValidatorCallback,
-} from "./mod.ts";
+} from "./types.ts";
 
 export class ConsoleSelectPrompt extends AbstractConsolePrompt
   implements IConsoleSelectPrompt {

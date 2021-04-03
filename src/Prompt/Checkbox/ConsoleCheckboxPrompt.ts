@@ -5,7 +5,7 @@ import {
   CheckboxValidatorCallback,
   ConsoleCheckboxPromptQuestionType,
   IConsoleCheckboxPrompt,
-} from "./mod.ts";
+} from "./types.ts";
 
 export class ConsoleCheckboxPrompt extends AbstractConsolePrompt
   implements IConsoleCheckboxPrompt {
