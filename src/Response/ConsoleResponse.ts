@@ -1,4 +1,4 @@
-import { EResponseType, IConsoleResponse, StatusType } from "./mod.ts";
+import { EResponseType, IConsoleResponse, StatusType } from "./types.ts";
 
 /**
  * Altdx Console Response.
