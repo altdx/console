@@ -1,5 +1,5 @@
 import figures from "https://cdn.skypack.dev/figures@3.2.0?dts";
-import { IConsoleFigure } from "./mod.ts";
+import { IConsoleFigure } from "./types.ts";
 
 /**
  * Altdx Console Figure.
