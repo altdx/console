@@ -1,4 +1,4 @@
-import { ConsoleRequestOptionType, IConsoleRequest } from "./mod.ts";
+import { ConsoleRequestOptionType, IConsoleRequest } from "./types.ts";
 
 /**
  * Altdx Console Request.
