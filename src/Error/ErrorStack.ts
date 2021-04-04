@@ -1,5 +1,9 @@
-import {IErrorStack} from "./mod.ts";
+import { IErrorStack } from "./types.ts";
 
+/**
+ * Altdx ErrorStack.
+ * This class allows you to handle error stack.
+ */
 export class ErrorStack implements IErrorStack {
   private readonly method: string | null = null;
   private readonly file: string | null = null;
@@ -8,6 +12,11 @@ export class ErrorStack implements IErrorStack {
   private native: boolean = true;
 
   constructor(stack: string) {
+    stack = stack.trim();
+    if (!/^at/i.test(stack)) {
+      return;
+    }
+
     const stacks = stack.split(" ");
     let file = "";
     if (stacks.length === 3) {
@@ -32,7 +41,7 @@ export class ErrorStack implements IErrorStack {
         return "";
       });
 
-    this.file = file;
+    this.file = file.replace(/:\/\/\//, ":");
   }
 
   public getColumn(): string | null {

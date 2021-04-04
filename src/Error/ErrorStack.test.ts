@@ -1,5 +1,5 @@
 import { assertEquals } from "../deps.ts";
-import {ErrorStack} from "./mod.ts";
+import { ErrorStack } from "./mod.ts";
 
 Deno.test("Altdx Error Stack - Should have method, file, line and column", () => {
   let stack = "at processResponse (deno:core/core.js:212:11)";
