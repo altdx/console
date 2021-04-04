@@ -1,5 +1,5 @@
-import {IConsoleRequest} from "../Request/mod.ts";
-import {IConsoleResponse} from "../Response/mod.ts";
+import { IConsoleRequest } from "../Request/mod.ts";
+import { IConsoleResponse } from "../Response/mod.ts";
 
 /**
  * Altdx Console Command option type.

@@ -1,5 +1,5 @@
-import { consoleStyle as style } from "../Style/mod.ts";
-import { consoleOutput as output } from "../Output/mod.ts";
+import { ConsoleStyle } from "../Style/mod.ts";
+import { ConsoleOutput } from "../Output/mod.ts";
 import { ConsoleRequest } from "../Request/mod.ts";
 import {
   ConsoleResponse,
@@ -8,6 +8,9 @@ import {
 } from "../Response/mod.ts";
 import { IConsoleCommandCollection } from "../Command/mod.ts";
 import { EOL } from "../deps.ts";
+
+const style = new ConsoleStyle();
+const output = new ConsoleOutput();
 
 export const run = (
   args: string[],

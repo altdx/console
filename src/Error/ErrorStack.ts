@@ -9,7 +9,7 @@ export class ErrorStack implements IErrorStack {
   private readonly file: string | null = null;
   private line: string | null = null;
   private column: string | null = null;
-  private native: boolean = true;
+  private native = true;
 
   constructor(stack: string) {
     stack = stack.trim();

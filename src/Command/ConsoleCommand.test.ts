@@ -67,7 +67,7 @@ Deno.test("Altdx Console Command - Should validate short options", () => {
 
   shortOptions.map((shortOption) => {
     request.parse(["command"]);
-    let command = new ConsoleCommand({
+    const command = new ConsoleCommand({
       name: "use",
       description: "",
       shortOptions: shortOption,
@@ -86,7 +86,7 @@ Deno.test("Altdx Console Command - Should validate short options", () => {
     s: { description: "", constraint: /hello/ },
   };
   request.parse(["command"]);
-  let command = new ConsoleCommand({
+  const command = new ConsoleCommand({
     name: "use",
     description: "",
     shortOptions: shortOptions2,
@@ -111,7 +111,7 @@ Deno.test("Altdx Console Command - Should validate long options", () => {
 
   longOptions.map((longOption) => {
     request.parse(["command"]);
-    let command = new ConsoleCommand({
+    const command = new ConsoleCommand({
       name: "use",
       description: "",
       longOptions: longOption,
@@ -130,7 +130,7 @@ Deno.test("Altdx Console Command - Should validate long options", () => {
     long: { description: "", constraint: /hello/ },
   };
   request.parse(["command"]);
-  let command = new ConsoleCommand({
+  const command = new ConsoleCommand({
     name: "use",
     description: "",
     longOptions: shortOptions2,

@@ -1,8 +1,5 @@
 import { IConsoleResponse } from "../Response/mod.ts";
-import {
-  ConsoleCommand,
-  ConsoleCommandCollection,
-} from "./mod.ts";
+import { ConsoleCommand, ConsoleCommandCollection } from "./mod.ts";
 import { assertEquals, assertNotEquals } from "../deps.ts";
 
 const collection = new ConsoleCommandCollection();

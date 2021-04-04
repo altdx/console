@@ -1,3 +1,4 @@
+// deno-lint-ignore-file ban-ts-comment
 import * as colors from "https://deno.land/std@0.92.0/fmt/colors.ts";
 import { ColorType, IConsoleStyle, ModifierType } from "./types.ts";
 

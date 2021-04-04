@@ -1,4 +1,4 @@
-import {IConsoleStyle} from "../Style/mod.ts";
+import { IConsoleStyle } from "../Style/mod.ts";
 
 /**
  * Altdx Console Output interface.

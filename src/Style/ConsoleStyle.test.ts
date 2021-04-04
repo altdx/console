@@ -19,7 +19,8 @@ const style = new ConsoleStyle();
 Deno.test("Altdx Console Style - should render modifiers", () => {
   assertEquals(bold("hello"), style.bold().render("hello"));
 
-  style.reset().strikethrough().hidden().inverse().underline().italic().dim().bold();
+  style.reset().strikethrough().hidden().inverse().underline().italic().dim()
+    .bold();
   assertEquals(
     bold(dim(italic(underline(inverse(hidden(strikethrough("hello"))))))),
     style.render("hello"),

@@ -1,4 +1,4 @@
-import {ConsolePromptQuestionType, IConsolePrompt} from "../types.ts";
+import { ConsolePromptQuestionType, IConsolePrompt } from "../types.ts";
 
 export type NumberValidatorCallback =
   | ((value: number) => boolean | string)
