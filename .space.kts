@@ -1,9 +1,13 @@
-/**
-* JetBrains Space Automation
-* This Kotlin-script file lets you automate build activities
-* For more info, see https://www.jetbrains.com/help/space/automation.html
-*/
-
-job("Hello World!") {
-    container(displayName = "Say Hello", image = "hello-world")
+job("Run npm test and publish") {
+  container(displayName = "Run publish script", image = "node:alpine") {
+    shellScript {
+      interpreter = "/bin/sh"
+      content = """
+                echo Install npm dependencies...
+                echo Run build if it exists in package.json...
+                echo Run tests...
+                echo Run publishing...
+            """
+    }
+  }
 }
