@@ -25,6 +25,7 @@ export class ConsoleSecretPrompt extends AbstractConsolePrompt
     super();
     this.question = {
       ...this.getQuestion(),
+      name: "answer",
       type: Secret,
       message: message,
       validator: null,

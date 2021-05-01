@@ -4,6 +4,7 @@ import {
   IConsoleInputPrompt,
   InputValidatorCallback,
 } from "./types.ts";
+import { Input } from "../../deps.ts";
 
 /**
  * Input console prompt.
@@ -29,7 +30,8 @@ export class ConsoleInputPrompt extends AbstractConsolePrompt
   constructor(message: MessageValueType) {
     super();
     this.question = {
-      ...this.getQuestion(),
+      type: Input,
+      name: "answer",
       message: message,
       validator: null,
       min: null,

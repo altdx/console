@@ -16,4 +16,4 @@ export {
   Secret,
   Select,
   Toggle,
-} from "https://deno.land/x/cliffy@v0.17.2/prompt/mod.ts";
+} from "https://deno.land/x/cliffy@v0.18.2/prompt/mod.ts";

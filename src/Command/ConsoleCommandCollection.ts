@@ -11,7 +11,7 @@ import { IConsoleCommand, IConsoleCommandCollection } from "./types.ts";
  *
  * collection.add(
  *   new ConsoleCommand({
- *     "create",
+ *     name: "create",
  *     description: "my description",
  *     shortOptions: {},
  *     longOptions: {},

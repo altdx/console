@@ -24,7 +24,7 @@ export class ConsoleNumberPrompt extends AbstractConsolePrompt
   constructor(message: MessageValueType) {
     super();
     this.question = {
-      ...this.getQuestion(),
+      name: "answer",
       type: Number,
       message: message,
       validator: null,

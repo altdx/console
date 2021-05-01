@@ -14,7 +14,7 @@ export class ConsoleSelectPrompt extends AbstractConsolePrompt
   constructor(message: MessageValueType) {
     super();
     this.question = {
-      ...this.getQuestion(),
+      name: "answer",
       message: message,
       type: Select,
       validator: null,

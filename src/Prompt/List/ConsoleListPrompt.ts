@@ -24,7 +24,7 @@ export class ConsoleListPrompt extends AbstractConsolePrompt
   constructor(message: MessageValueType) {
     super();
     this.question = {
-      ...this.getQuestion(),
+      name: "answer",
       message: message,
       type: List,
       validator: null,

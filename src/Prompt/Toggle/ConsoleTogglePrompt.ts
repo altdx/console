@@ -24,7 +24,7 @@ export class ConsoleTogglePrompt extends AbstractConsolePrompt
   constructor(message: MessageValueType) {
     super();
     this.question = {
-      ...this.getQuestion(),
+      name: "answer",
       type: Toggle,
       message: message,
       validator: null,

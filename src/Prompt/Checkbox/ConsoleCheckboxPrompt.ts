@@ -14,7 +14,7 @@ export class ConsoleCheckboxPrompt extends AbstractConsolePrompt
   constructor(message: MessageValueType) {
     super();
     this.question = {
-      ...this.getQuestion(),
+      name: "answer",
       message: message,
       validator: null,
       type: Checkbox,

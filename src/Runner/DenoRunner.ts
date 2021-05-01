@@ -1,5 +1,5 @@
-import {Runner} from "./Runner.ts";
-import {DenoPermissionType} from "./mod.ts";
+import { Runner } from "./Runner.ts";
+import { DenoPermissionType } from "./mod.ts";
 
 export class DenoRunner extends Runner {
   private _verbose: boolean = true;

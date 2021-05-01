@@ -24,7 +24,7 @@ export class ConsoleConfirmPrompt extends AbstractConsolePrompt
   constructor(message: MessageValueType) {
     super();
     this.question = {
-      ...this.getQuestion(),
+      name: "answer",
       type: Confirm,
       message: message,
       validator: null,
